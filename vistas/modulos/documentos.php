@@ -22,23 +22,13 @@
 
     <div class="box">
 
-      <div class="box-header with-border">
-  
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
-          
-          Agregar Documento
-
-        </button>
-
-      </div>
-
-      <div class="box-body">
+    <div class="box-body">
         
-       <table class="table table-bordered dt-table-striped tablas" width="100%">
+      <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
          
         <thead>
          
-         <tr>
+         <tr style="align-content:center">
            
            <th style="width:10px">#</th>
            <th>Codigo</th>
@@ -52,8 +42,9 @@
            <th>Proceso</th>
            <th>Grupo</th>
            <th>Usuario</th>
+           <th>URL</th>
            <th>Estado</th>
-           <th>Acciones</th>
+           <th style="width:100px">Acciones</th>
 
          </tr> 
 
@@ -66,15 +57,15 @@
         $item = null;
         $valor = null;
 
-        $usuarios = ControladorDocumentos::ctrMostrarDocumentos($item, $valor);
+        $documentos = ControladorDocumentos::ctrMostrarDocumentos($item, $valor);
 
-       foreach ($usuarios as $key => $value){
+       foreach ($documentos as $key => $value){
          
           echo ' <tr>
-                  <td>1</td>
+                  <td>'.($key+1).'</td>
                   <td>'.$value["codigo"].'</td>
                   <td>'.$value["version"].'</td>
-                  <td>'.$value["usuario"].'</td>
+                  <td>'.$value["nombre"].'</td>
                   <td>'.$value["fecha_elaboracion"].'</td>
                   <td>'.$value["fecha_actualizacion"].'</td>
                   <td>'.$value["fecha_ultima_revision"].'</td>

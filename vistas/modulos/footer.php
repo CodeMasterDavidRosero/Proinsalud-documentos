@@ -2,7 +2,9 @@
 
 <div class="fixed-bottom text-center">
 	<p class="text-primary">Copyright &copy;
-		<script>document.write(new Date().getFullYear());</script>
+		<script>
+		var f=new Date();
+		document.write(f.getFullYear());</script>
 		 Departamento de Sistemas - <spam style="color: orange"><b>Proinsalud S.A.</b></spam></a>
     </p>
 </div>
