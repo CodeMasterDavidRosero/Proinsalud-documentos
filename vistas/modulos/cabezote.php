@@ -76,7 +76,7 @@
 							<div class="pull-right">
 								
 							Haga clic para cerrar sesión...
-								<a href="salir" class="btn btn-info">Salir</a>
+								<a href="salir" class="btn btn-danger">Salir</a>
 
 							</div>
 

@@ -1150,6 +1150,7 @@ a:focus {
   margin-top: 9px;
   border-style:inherit;
   border-width: 1px;
+  opacity: 0.7;
 
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body:before,

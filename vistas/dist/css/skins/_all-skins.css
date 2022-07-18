@@ -96,7 +96,7 @@
 .skin-blue .sidebar-menu > li.menu-open > a {
   color: #000;
   background: #ffc107;
-  opacity: revert;
+  
   
 }
 .skin-blue .sidebar-menu > li.active > a {

@@ -1,4 +1,4 @@
-<aside class="main-sidebar" style="background: linear-gradient(45deg, #2f89fc 0%, #f39c12 100%); opacity:0.7;>
+<aside class="main-sidebar" style="background: linear-gradient(45deg, #2f89fc 0%, #f39c12 100%); opacity:0.85;>
 
 	 <section class="sidebar">
 
