@@ -1,11 +1,8 @@
 <footer class="main-footer">
 
 <div class="fixed-bottom text-center">
-	<p class="text-primary">Copyright &copy;
-		<script>
-		var f=new Date();
-		document.write(f.getFullYear());</script>
-		 Departamento de Sistemas - <spam style="color: orange"><b>Proinsalud S.A.</b></spam></a>
+	<p  style="color: rgb(0 123 255); font-size:16px">Copyright &copy;
+		<script>var f=new Date(); document.write(f.getFullYear());</script> Departamento de Sistemas - <spam style="color: orange"><b>Proinsalud S.A.</b></spam></a>
     </p>
 </div>
 		  	<script src="js/jquery-3.6.0.min.js"></script>

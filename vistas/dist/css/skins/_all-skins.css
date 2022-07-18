@@ -4,10 +4,18 @@
  */
 .skin-blue .main-header .navbar {
   background-color: #fff;
+  vertical-align: middle;
 }
 .skin-blue .main-header .navbar .nav > li > a {
   color: #000;
-  background-color: #747474;
+  background-color: #ffc107;
+  margin-top: 10px;
+  border-radius: 5px;
+  margin-right: 15px;
+  height: 50px;
+  width: auto;
+  text-align: right;
+  text-orientation: sideways;
 }
 .skin-blue .main-header .navbar .nav > li > a:hover,
 .skin-blue .main-header .navbar .nav > li > a:active,
@@ -17,7 +25,7 @@
 .skin-blue .main-header .navbar .nav .open > a:focus,
 .skin-blue .main-header .navbar .nav > .active > a {
   background: rgba(0, 0, 0, 0.1);
-  color: #f6f6f6;
+  color: #000;
 }
 .skin-blue .main-header .navbar .sidebar-toggle {
   color: #ffffff;
@@ -29,10 +37,12 @@
 .skin-blue .main-header .navbar .sidebar-toggle {
   color: #000;
   background-color: #ffc107;
+  opacity: 1;
   
 }
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
   background-color: #ffc107;
+  
 }
 @media (max-width: 767px) {
   .skin-blue .main-header .navbar .dropdown-menu li.divider {
@@ -46,30 +56,27 @@
   }
 }
 .skin-blue .main-header .logo {
-  background: linear-gradient(45deg, #2f89fc 0%, #f39c12 100%);
-  color: #ffffff;
-  border-bottom: 0 solid transparent;
+  color: #fff;
+    
 }
 .skin-blue .main-header .logo:hover {
-  background-color: #ffffff;
+  background-color: none;
 }
 .skin-blue .main-header li.user-header {
-  background-color: #fff;
+  background-color: none;
 }
 .skin-blue .content-header {
-  background: #eeeeee;
+  background: #ffffff;
+  box-shadow: 3px 3px 20px 0 rgba(5, 5, 5, 0.5);
 }
 .skin-blue .wrapper,
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
-  background: #2f89fc;
-  background: -moz-linear-gradient(45deg, #2f89fc 0%, #f39c12 100%);
-  background: -webkit-linear-gradient(45deg, #2f89fc 0%, #f39c12 100%);
-  background: -o-linear-gradient(45deg, #2f89fc 0%, #f39c12 100%);
-  background: -ms-linear-gradient(45deg, #2f89fc 0%, #f39c12 100%);
-  background: linear-gradient(45deg, #2f89fc 0%, #f39c12 100%);
-  background-size: cover;
-  background-position: 50%;   
+  background-image: url(../../../../vistas/img/plantilla/bg_1.jpg);
+  background-repeat: no-repeat;
+  background-size:contain;
+     
+  
 }
 
 .skin-blue .user-panel > .info,
@@ -82,16 +89,24 @@
 }
 .skin-blue .sidebar-menu > li > a {
   border-left: 3px solid transparent;
+  
 }
 .skin-blue .sidebar-menu > li:hover > a,
 .skin-blue .sidebar-menu > li.active > a,
 .skin-blue .sidebar-menu > li.menu-open > a {
-  color: #ffffff;
-  background: #f39c12;
+  color: #000;
+  background: #ffc107;
+  opacity: revert;
+  
 }
 .skin-blue .sidebar-menu > li.active > a {
-  border-left-color: #fff;
+  border-left-color: 3px #fff;
 }
+.skin-blue .sidebar-menu > li.hover > {
+  background-color: #fff;
+}
+
+
 .skin-blue .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
   background: #fff;

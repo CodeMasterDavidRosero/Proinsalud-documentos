@@ -8,7 +8,7 @@
 		<!-- logo mini -->
 		<span class="logo-mini">
 			
-			<img src="vistas/img/plantilla/logo_negativo.png" class="img-responsive" style="padding:10px">
+			<img src="vistas/img/plantilla/logo_negativo.png" class="img-responsive" style="padding:1px; margin-top:5px">
 
 		</span>
 
@@ -16,7 +16,7 @@
 
 		<span class="logo-lg">
 			
-			<img src="vistas/img/plantilla/logo_banner.png" class="img-responsive" style="padding:3px 0px">
+			<img src="vistas/img/plantilla/logo_negativo_banner.png" class="img-responsive" style="margin-top:15px">
 
 		</span>
 
@@ -38,9 +38,9 @@
 		<!-- perfil de usuario -->
 
 		<div class="navbar-custom-menu">
-				
+
 			<ul class="nav navbar-nav">
-				
+
 				<li class="dropdown user user-menu">
 					
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -49,19 +49,21 @@
 
 					if($_SESSION["foto"] != ""){
 
-						echo '<img src="'.$_SESSION["foto"].'" class="user-image">';
+						echo '<img src="vistas/img/usuarios/default/perfil.png" class="user-image">';
+
+						#echo '<img src="'.$_SESSION["foto"].'" class="user-image">';
 
 					}else{
 
 
-						echo '<img src="vistas/img/usuarios/default/anonymous.png" class="user-image">';
+						echo '<img src="vistas/img/usuarios/default/perfil.png" class="user-image">';
 
 					}
 
 
 					?>
 						
-						<span class="hidden-xs"><?php  echo $_SESSION["nombre"]; ?></span>
+						<span><b><?php  echo $_SESSION["perfil"]; ?> ▼</b><p style="font-size: 12px; margin-top:-8px"><?php  echo $_SESSION["usuario"]; ?></p></span>
 
 					</a>
 
@@ -73,7 +75,8 @@
 							
 							<div class="pull-right">
 								
-								<a href="salir" class="btn btn-default btn-flat">Salir</a>
+							Haga clic para cerrar sesión...
+								<a href="salir" class="btn btn-info">Salir</a>
 
 							</div>
 

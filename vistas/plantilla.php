@@ -52,7 +52,13 @@ session_start();
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="vistas/plugins/iCheck/all.css">
 
- 
+  <!-- Datapiker style -->
+  <link rel="stylesheet" href="vistas/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
+
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="vistas/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+  
   <!--=====================================
   PLUGINS DE JAVASCRIPT
   ======================================-->
@@ -94,6 +100,13 @@ session_start();
   <!-- jQuery Number -->
   <script src="vistas/plugins/jqueryNumber/jquerynumber.min.js"></script>
 
+  <!--Bootstrap Datapiker  -->
+  <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" charset="UTF-8"></script>
+
+  <!-- daterangepicker http://www.daterangepicker.com/-->
+  <script src="vistas/bower_components/moment/min/moment.min.js"></script>
+  <script src="vistas/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
 
 </head>
 
@@ -127,8 +140,9 @@ CUERPO DOCUMENTO
 
     if(isset($_GET["ruta"])){
 
-      if($_GET["ruta"] == "documentos" ||              
-         $_GET["ruta"] == "inicio" ||                  
+      if($_GET["ruta"] == "inicio" ||
+         $_GET["ruta"] == "documentos" ||              
+         $_GET["ruta"] == "formularios" ||                  
          $_GET["ruta"] == "salir"){
 
         include "modulos/".$_GET["ruta"].".php";

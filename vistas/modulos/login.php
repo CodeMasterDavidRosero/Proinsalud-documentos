@@ -8,7 +8,7 @@
 
   </div>
 
-  <div class="login-box-body">
+  <div class="login-box-body" style="border-radius: 5px;">
 
     <p class="login-box-msg">Ingresar al sistema</p>
 
@@ -16,23 +16,23 @@
 
       <div class="form-group has-feedback">
 
-        <input type="text" class="form-control" placeholder="Usuario" name="ingUsuario" required>
+        <input type="text" class="form-control" placeholder="Usuario" name="ingUsuario" style="border-radius: 5px;" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
       </div>
 
       <div class="form-group has-feedback">
 
-        <input type="password" class="form-control" placeholder="Contraseña" name="ingPassword" required>
+        <input type="password" class="form-control" placeholder="Contraseña" name="ingPassword" style="border-radius: 5px;" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       
       </div>
 
       <div class="row">
        
-        <div class="col-xs-4">
+        <div class="col-xs-4 pull-right">
 
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+          <button type="submit" class="btn btn-info btn-block btn-flat" style="border-radius: 5px;">Ingresar</button>
         
         </div>
 

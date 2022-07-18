@@ -9,18 +9,18 @@ $(".nuevaFoto").change(function(){
   	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
   	=============================================*/
 
-  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+  	if(imagen["type"] != "image/doc" && imagen["type"] != "image/docx"){
 
   		$(".nuevaFoto").val("");
 
   		 swal({
-		      title: "Error al subir la imagen",
-		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      title: "Error al subir el Documento",
+		      text: "¡El documento debe tener un formato: WORD, EXCEL, PDF, PPT!",
 		      type: "error",
 		      confirmButtonText: "¡Cerrar!"
 		    });
 
-  	}else if(imagen["size"] > 2000000){
+  	}else if(imagen["size"] > 20000000){
 
   		$(".nuevaFoto").val("");
 
