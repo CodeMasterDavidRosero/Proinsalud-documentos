@@ -49,9 +49,7 @@
 
 					if($_SESSION["foto"] != ""){
 
-						echo '<img src="vistas/img/usuarios/default/perfil.png" class="user-image">';
-
-						#echo '<img src="'.$_SESSION["foto"].'" class="user-image">';
+						echo '<img src="'.$_SESSION["foto"].'" class="user-image">';
 
 					}else{
 
@@ -63,7 +61,7 @@
 
 					?>
 						
-						<span><b><?php  echo $_SESSION["perfil"]; ?> ▼</b><p style="font-size: 12px; margin-top:-8px"><?php  echo $_SESSION["usuario"]; ?></p></span>
+						<span><b><?php  echo $_SESSION["usuario"]; ?> ▼</b><p style="font-size: 10px; margin-top:-10px"><?php  echo $_SESSION["perfil"]; ?></p></span>
 
 					</a>
 

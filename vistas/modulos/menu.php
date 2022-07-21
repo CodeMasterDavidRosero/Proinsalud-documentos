@@ -27,6 +27,13 @@
 			</li>
 
 			<li>
+				<a href="usuarios">
+					<i class="fa fa-users"></i>
+					<span>Usuarios</span>
+				</a>
+			</li>
+
+			<li>
 				<a href="salir">
 					<i class="fa fa-sign-out"></i>
 					<span>Cerrar</span>
