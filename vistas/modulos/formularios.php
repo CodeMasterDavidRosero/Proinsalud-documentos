@@ -12,7 +12,7 @@
 
     <section class="content-header" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
-      <h1 style="font-size:36px">Formulario Para Ingresar Documentos</h1>
+      <h1 style="font-size:30px">Formulario Carga Documentos</h1>
     
     <ol class="breadcrumb">
       

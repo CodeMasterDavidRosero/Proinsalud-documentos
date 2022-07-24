@@ -6,7 +6,7 @@
 
     <section class="content-header" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
      
-    <h1 style="font-size:36px">Administrar de Documentos</h1>
+    <h1 style="font-size:30px">Administrar Documentos</h1>
 
     <ol class="breadcrumb">
       
@@ -27,14 +27,14 @@
 
     <div class="box-body">
         
-      <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+      <table class="table table-bordered table-striped dt-responsive tablas" style="border-radius:5px; width: 100%">
          
         <thead>
          
          <tr style="align-content:center">
            
            <th style="width:10px">#</th>
-           <th>Codigo</th>
+           <th>Código</th>
            <th>Versión</th>
            <th>Nombre</th>
            <th>Fecha Elaboración</th>
@@ -46,7 +46,6 @@
            <th>Grupo</th>
            <th>Usuario</th>
            <th>URL</th>
-           <th>Estado</th>
            <th style="width:100px">Acciones</th>
 
          </tr> 
@@ -77,8 +76,7 @@
                   <td>'.$value["proceso"].'</td>
                   <td>'.$value["grupo"].'</td>
                   <td>'.$value["usuario"].'</td>
-                  <td>'.$value["url"].'</td>
-                  <td>'.$value["estado"].'</td>';
+                  <td>'.$value["url"].'</td>';
                   
                                     
                   echo '<td>

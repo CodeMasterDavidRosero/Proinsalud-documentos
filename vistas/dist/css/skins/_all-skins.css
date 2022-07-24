@@ -13,7 +13,7 @@
   border-radius: 5px;
   margin-right: 15px;
   height: 50px;
-  width: 200px;
+  width: auto;
   text-align: right;
   text-orientation: sideways;
 }
@@ -74,9 +74,7 @@
 .skin-blue .left-side {
   background-image: url(../../../../vistas/img/plantilla/bg_1.jpg);
   background-repeat: no-repeat;
-  background-size:contain;
-     
-  
+  background-size:contain;  
 }
 
 .skin-blue .user-panel > .info,

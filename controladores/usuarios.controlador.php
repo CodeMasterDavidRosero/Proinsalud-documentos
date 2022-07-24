@@ -31,6 +31,7 @@ class ControladorUsuarios{
 						$_SESSION["usuario"] = $respuesta["usuario"];
 						$_SESSION["foto"] = $respuesta["foto"];
 						$_SESSION["perfil"] = $respuesta["perfil"];
+						$_SESSION["roles"] = $respuesta["roles"];
 
 						/*=============================================
 						REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN
@@ -64,7 +65,7 @@ class ControladorUsuarios{
 					}else{
 
 						echo '<br>
-							<div class="alert alert-danger">El usuario aún no está activado</div>';
+							<div class="alert alert-warning">El usuario aún no está activado</div>';
 
 					}		
 
@@ -176,6 +177,7 @@ class ControladorUsuarios{
 							   "fecingreso" => $_POST["nuevoFecingreso"],
 							   "password" => $encriptar,
 					           "perfil" => $_POST["nuevoPerfil"],
+							   "roles" => $_POST["nuevoRol"],
 					           "foto"=>$ruta);
 
 				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
@@ -389,6 +391,7 @@ class ControladorUsuarios{
 							   "fecingreso" => $_POST["editarFecingreso"],
 							   "password" => $encriptar,
 							   "perfil" => $_POST["editarPerfil"],
+							   "roles" => $_POST["editarRol"],
 							   "foto" => $ruta);
 
 				$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);

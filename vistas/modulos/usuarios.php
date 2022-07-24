@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
+if($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == ""){
 
   echo '<script>
 
@@ -16,32 +16,30 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
 <div class="content-wrapper">
 
   <section class="content-header">
-    
-    <h1>
-      
-      Administrar Personal
-    
-    </h1>
 
-    <ol class="breadcrumb">
-      
-      <li><a href="inicio"><i class="fa fa-home"></i> Inicio</a></li>
-      
-      <li class="active">Administrar personal/usuarios</li>
+  <form role="form" method="post" enctype="multipart/form-data">
+
+  <section class="content-header" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
     
-    </ol>
+    <h1 style="font-size:36px">Administrar Personal</h1>
+
+    
 
   </section>
+
+</form>
+
+<div class="modal-content">
 
   <section class="content">
 
     <div class="box">
 
-      <div class="box-header with-border">
+      <div class="box-body">
   
         <button class="btn btn-info" data-toggle="modal" data-target="#modalAgregarUsuario">
           
-          Agregar Personal / Usuarios
+          Agregar Personal
 
         </button>
 
@@ -49,7 +47,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
 
       <div class="box-body">
         
-       <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+       <table class="table table-bordered table-striped dt-responsive tablas" style="border-radius:5px; width: 100%">
          
         <thead>
          
@@ -58,9 +56,13 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
            <th style="width:10px">#</th>
            <th>Nombres</th>
            <th>Usuario</th>
-           <th>Cumpleaños</th>
-           <th>Foto</th>
            <th>Perfil</th>
+           <th>Rol</th>
+           <th>Cumpleaños</th>
+           <th>Documento</th>
+           <th>Telefono</th>
+           <th>Contrato</th>
+           <th>Foto</th>
            <th>Estado</th>
            <th>Último Acceso</th>
            <th>Acciones</th>
@@ -84,7 +86,12 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
                   <td>'.($key+1).'</td>
                   <td>'.$value["nombre"].'</td>
                   <td>'.$value["usuario"].'</td>
-                  <td>'.$value["fecha"].'</td>
+                  <td>'.$value["perfil"].'</td>
+                  <td>'.$value["roles"].'</td>
+                  <td>'.$value["fechanac"].'</td>
+                  <td>'.$value["tipodoc"]." ".$value["numident"].'</td>
+                  <td>'.$value["telefono"].'</td>
+                  <td>'.$value["contrato"].'</td>
 
                   ';
 
@@ -98,7 +105,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
 
                   }
 
-                  echo '<td>'.$value["perfil"].'</td>';
+                                  
                   
 
                   if($value["estado"] != 0){
@@ -150,7 +157,7 @@ MODAL AGREGAR USUARIO
   
   <div class="modal-dialog">
 
-    <div class="modal-content">
+    <div class="modal-content" style="border-radius: 5px;">
 
       <form role="form" method="post" enctype="multipart/form-data">
 
@@ -158,11 +165,11 @@ MODAL AGREGAR USUARIO
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header" style="background: #ffc107; color:Black">
+        <div class="modal-header" style="background: #ffc107; color:Black; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar personal/usuario</h4>
+          <h4 class="modal-title">Agregar personal</h4>
 
         </div>
 
@@ -180,9 +187,9 @@ MODAL AGREGAR USUARIO
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar Nombres y Apellidos" required>
+                <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoNombre" placeholder="Ingresar Nombres y Apellidos" required>
 
               </div>
 
@@ -196,9 +203,9 @@ MODAL AGREGAR USUARIO
   
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-address-card-o"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Nombre de Acceso" id="nuevoUsuario" required>
+                <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoUsuario" placeholder="Nombre de Acceso" id="nuevoUsuario" required>
 
               </div>
 
@@ -210,9 +217,9 @@ MODAL AGREGAR USUARIO
                           
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-pencil-square-o"></i></span> 
 
-                <select class="form-control input-lg" name="nuevoTipodoc">
+                <select class="form-control input-lg" name="nuevoTipodoc" style="border-radius: 5px;">
                   
                   <option value="">Tipo de Documento</option>
 
@@ -241,9 +248,9 @@ MODAL AGREGAR USUARIO
                         
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-list-alt"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-list-alt"></i></span> 
 
-                <input type="number" min="0" class="form-control input-lg" name="nuevoNumident" placeholder="Número Documento" id="nuevoNumident" required>
+                <input type="number" min="0" class="form-control input-lg" style="border-radius: 5px;" name="nuevoNumident" placeholder="Número Documento" id="nuevoNumident" required>
 
               </div>
 
@@ -255,9 +262,9 @@ MODAL AGREGAR USUARIO
                           
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-phone"></i></span> 
 
-                  <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Teléfono" data-inputmask="'mask':'(999)-999-9999'" data-mask required>
+                  <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoTelefono" placeholder="Teléfono" data-inputmask="'mask':'(999)-999-9999'" data-mask required>
 
               </div>
 
@@ -272,9 +279,9 @@ MODAL AGREGAR USUARIO
                         
               <div class="input-group date dp-date">
 
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span> 
               
-                <input type="text" class="form-control input-lg" name="nuevoFechanac" placeholder="Cumpleaños" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFechanac" placeholder="Cumpleaños" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
               </div>
 
@@ -287,17 +294,19 @@ MODAL AGREGAR USUARIO
                           
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-tags"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-tags"></i></span> 
 
-                <select class="form-control input-lg" name="nuevoContrato">
+                <select class="form-control input-lg" name="nuevoContrato" style="border-radius: 5px;">
                   
                   <option value="">Tipo de Contrato</option>
 
-                  <option value="Laboral">Laboral</option>
+                  <option value="Laboral">Horal-Laboral</option>
 
                   <option value="O.P.S.">O.P.S.</option>
 
-                  <option value="Horas">Horas</option>
+                  <option value="Horas">Por Horas</option>
+
+                  <option value="indefinido">Indefinido</option>
                 
                 </select>
 
@@ -314,9 +323,9 @@ MODAL AGREGAR USUARIO
                         
               <div class="input-group date dp-date">
 
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span> 
               
-                <input type="text" class="form-control input-lg" name="nuevoFecingreso" placeholder="Fecha Ingreso" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFecingreso" placeholder="Fecha Ingreso" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
                 </div>
 
@@ -330,9 +339,9 @@ MODAL AGREGAR USUARIO
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-lock"></i></span> 
 
-                <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar contraseña" required>
+                <input type="password" class="form-control input-lg" style="border-radius: 5px;" name="nuevoPassword" placeholder="Ingresar contraseña" required>
 
               </div>
 
@@ -348,27 +357,67 @@ MODAL AGREGAR USUARIO
               
                <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-user-o"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-user-o"></i></span> 
 
-                <select class="form-control input-lg" name="nuevoPerfil">
+                <select class="form-control input-lg" name="nuevoPerfil" style="border-radius: 5px;">
                   
                   <option value="">Selecionar Perfil</option>
 
+                  <option value="SuperAdmin">Super Administador</option>
+
                   <option value="Administrador">Administrador</option>
 
-                  <option value="Especial">Especial</option>
-
-                  <option value="Vendedor">Vendedor</option>
+                  <option value="Coordinador">Coordinador</option>
 
                 </select>
 
               </div>
-
+            
             </div>
 
-            </div>
+              <div class="col-xs-6">
+              
+               <div class="input-group">
+              
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-user-o"></i></span> 
 
-             </div>
+                <select class="form-control input-lg" name="nuevoRol" style="border-radius: 5px;">
+                  
+                  <option value="">Selecionar Rol</option>
+
+                  <option value="1">Rol Administrador</option>
+
+                  <option value="2">Direccionamiento Estratégico</option>
+
+                  <option value="3">Sistemas de gestión</option>
+
+                  <option value="4">Gestión jurídica y asuntos empresariales</option>
+
+                  <option value="5">Docencia y servicio</option>
+
+                  <option value="6">Gestión de servicios de aseguramiento</option>
+
+                  <option value="7">Gestión Financiera</option>
+
+                  <option value="8">Gestión de Recursos de la Información</option>
+
+                  <option value="9">Gestión de Recursos Físicos</option>
+
+                  <option value="10">Gestión de Recursos Humanos</option>
+
+                  <option value="11">Procesos asistenciales</option>
+
+                  <option value="12">Procesos de apoyo</option>
+
+                  </select>
+
+              </div>
+            
+            </div>
+          
+          </div>
+
+          </div>
 
             
             <!-- ENTRADA PARA SUBIR FOTO -->
@@ -378,32 +427,31 @@ MODAL AGREGAR USUARIO
               
               <div class="input-group">
                        
-              <div class="panel">SUBIR FOTO</div>
+                <div class="panel">Subir Foto</div>
 
-              <input type="file" class="nuevaFoto" name="nuevaFoto">
+                  <input type="file" class="nuevaFoto" name="nuevaFoto">
 
-              <p class="help-block">Peso máximo de la foto 2MB</p>
+                  <p class="help-block" style="color: #007bff">Archivos permitidos: JPGE, JPG, PNG</p>
 
-              <img src="vistas/img/usuarios/default/default.png" class="img-thumbnail previsualizar" width="100px">
-
+                  <img src="vistas/img/usuarios/default/default.png" class="img-thumbnail previsualizar" width="100px">
+                
+                </div>
+              
+              </div>
+            
             </div>
-
-             </div>
-
-             </div>
-    
-            </div>
-
+          
+          </div>
 
         <!--=====================================
         PIE DEL MODAL
         ======================================-->
 
-        <div class="modal-footer">
+        <div class="modal-footer" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar usuario</button>
+          <button type="submit" class="btn btn-info">Guardar usuario</button>
 
         </div>
 
@@ -430,7 +478,7 @@ MODAL EDITAR USUARIO
   
   <div class="modal-dialog">
 
-    <div class="modal-content">
+    <div class="modal-content" style="border-radius: 5px;">
 
       <form role="form" method="post" enctype="multipart/form-data">
 
@@ -438,7 +486,7 @@ MODAL EDITAR USUARIO
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header" style="background: linear-gradient(145deg, rgba(165,51,148,1), rgba(251,107,69,1)); color:white">
+        <div class="modal-header" style="background: #ffc107; color:Black; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -462,7 +510,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre" value="" readonly>
+                <input type="text" class="form-control input-lg" style="border-radius: 5px;" id="editarNombre" name="editarNombre">
 
               </div>
 
@@ -478,7 +526,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="text" class="form-control input-lg" id="editarUsuario" name="editarUsuario" readonly>
+                <input type="text" class="form-control input-lg" style="border-radius: 5px;" id="editarUsuario" name="editarUsuario">
 
               </div>
 
@@ -492,7 +540,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-users"></i></span> 
 
-                <select class="form-control input-lg" name="editarTipodoc">
+                <select class="form-control input-lg" style="border-radius: 5px;" name="editarTipodoc">
                   
                   <option value="" id="editarTipodoc">Tipo de Documento</option>
 
@@ -523,7 +571,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="number" class="form-control input-lg" name="editarNumident" id="editarNumident" readonly>
+                <input type="number" class="form-control input-lg" style="border-radius: 5px;" name="editarNumident" id="editarNumident">
 
               </div>
 
@@ -537,7 +585,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-users"></i></span> 
 
-                  <input type="text" class="form-control input-lg" id="editarTelefono" name="editarTelefono" data-inputmask="'mask':'999-999-9999'" data-mask required>
+                  <input type="text" class="form-control input-lg" id="editarTelefono" style="border-radius: 5px;" name="editarTelefono" data-inputmask="'mask':'999-999-9999'" data-mask>
              
               </div>
 
@@ -554,7 +602,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
                
-                <input type="text" class="form-control input-lg" name="editarFechanac" id="editarFechanac" placeholder="Cumpleaños" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" name="editarFechanac" style="border-radius: 5px;" id="editarFechanac" placeholder="Cumpleaños" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask>
 
               </div>
 
@@ -568,15 +616,17 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-users"></i></span> 
 
-                <select class="form-control input-lg" name="editarContrato">
-                  
-                  <option value="" id="editarContrato">Tipo de Contrato</option>
+                <select class="form-control input-lg" style="border-radius: 5px;" name="editarContrato">
+                
+                    <option value="" id="editarContrato">Tipo de Contrato</option>
 
-                  <option value="Laboral">Laboral</option>
+                    <option value="Laboral">Horal-Laboral</option>
 
-                  <option value="O.P.S.">O.P.S.</option>
+                    <option value="O.P.S.">O.P.S.</option>
 
-                  <option value="Horas">Horas</option>
+                    <option value="Horas">Por Horas</option>
+
+                    <option value="indefinido">Indefinido</option>
                 
                 </select>
 
@@ -595,7 +645,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
                 
-                <input type="text" class="form-control input-lg" name="editarFecingreso" id="editarFecingreso" placeholder="Fecha Ingreso" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask readonly>
+                <input type="text" class="form-control input-lg" style="border-radius:5px" name="editarFecingreso" id="editarFecingreso" placeholder="Fecha Ingreso" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask>
 
               </div>
 
@@ -611,7 +661,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span> 
 
-                <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Nueva contraseña">
+                <input type="password" class="form-control input-lg" style="border-radius:5px" name="editarPassword" placeholder="Nueva contraseña">
 
                 <input type="hidden" id="passwordActual" name="passwordActual">
 
@@ -622,9 +672,7 @@ MODAL EDITAR USUARIO
             </div>
 
           <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
-
             
-
             <div class="form-group">
 
               <div class="col-xs-6">
@@ -633,16 +681,56 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-users"></i></span> 
 
-                <select class="form-control input-lg" name="editarPerfil">
+                <select class="form-control input-lg" style="border-radius:5px" name="editarPerfil">
                   
-                  <option value="" id="editarPerfil">Selecionar Perfil</option>
+                    <option value="" id="editarPerfil">Selecionar Perfil</option>
 
-                  <option value="Administrador">Administrador</option>
+                    <option value="SuperAdmin">Super Administador</option>
 
-                  <option value="Especial">Especial</option>
+                    <option value="Administrador">Administrador</option>
 
-                  <option value="Vendedor">Vendedor</option>
+                    <option value="Coordinador">Coordinador</option>
 
+                </select>
+
+              </div>
+
+            </div>
+
+            <div class="col-xs-6">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-users"></i></span> 
+
+                <select class="form-control input-lg" style="border-radius:5px" name="editarRol">
+                  
+                  <option value="" id="editarRol">Selecionar Rol</option>
+
+                  <option value="1">Rol Administrador</option>
+
+                  <option value="2">Direccionamiento Estratégico</option>
+
+                  <option value="3">Sistemas de gestión</option>
+
+                  <option value="4">Gestión jurídica y asuntos empresariales</option>
+
+                  <option value="5">Docencia y servicio</option>
+
+                  <option value="6">Gestión de servicios de aseguramiento</option>
+
+                  <option value="7">Gestión Financiera</option>
+
+                  <option value="8">Gestión de Recursos de la Información</option>
+
+                  <option value="9">Gestión de Recursos Físicos</option>
+
+                  <option value="10">Gestión de Recursos Humanos</option>
+
+                  <option value="11">Procesos asistenciales</option>
+
+                  <option value="12">Procesos de apoyo</option>
+                  
                 </select>
 
               </div>
@@ -661,12 +749,12 @@ MODAL EDITAR USUARIO
 
               <div class="input-group">
 
-              <div class="panel">SUBIR FOTO</div>
+              <div class="panel">Subir Foto</div>
 
               <input type="file" class="nuevaFoto" name="editarFoto">
 
-              <p class="help-block">Peso máximo de la foto 2MB</p>
-
+              <p class="help-block" style="color: #007bff">Archivos permitidos: JPGE, JPG, PNG</p>
+              
               <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizarEditar" width="100px">
 
               <input type="hidden" name="fotoActual" id="fotoActual">
@@ -688,7 +776,7 @@ MODAL EDITAR USUARIO
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary" >Modificar usuario</button>
+          <button type="submit" class="btn btn-info" >Modificar usuario</button>
 
         </div>
 
@@ -706,6 +794,7 @@ MODAL EDITAR USUARIO
   </div>
 
 </div>
+      </div>
 
 <?php
 

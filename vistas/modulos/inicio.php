@@ -13,7 +13,7 @@
 
     <section class="content-header" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
-      <h1 style="font-size:36px">Menú Documentos</h1>
+      <h1 style="font-size:30px;">Menú Documentos</h1>
     
       <ol class="breadcrumb">
               

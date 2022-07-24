@@ -61,7 +61,7 @@
 
 					?>
 						
-						<span><b><?php  echo $_SESSION["usuario"]; ?> ▼</b><p style="font-size: 10px; margin-top:-10px"><?php  echo $_SESSION["perfil"]; ?></p></span>
+						<span><b><?php  echo $_SESSION["nombre"]; ?> ▼<p style="color:#007bff; font-size: 10px; margin-top:-8px; margin-right:18px"><?php  echo $_SESSION["perfil"]; ?></p></b></span>
 
 					</a>
 

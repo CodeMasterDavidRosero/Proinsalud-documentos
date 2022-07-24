@@ -44,7 +44,7 @@ class ModeloUsuarios{
 
 	static public function mdlIngresarUsuario($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, usuario, tipodoc, numident, telefono, fechanac, contrato, fecingreso, password, perfil, foto)VALUES (:nombre, :usuario, :tipodoc, :numident, :telefono, :fechanac, :contrato, :fecingreso, :password, :perfil, :foto)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, usuario, tipodoc, numident, telefono, fechanac, contrato, fecingreso, password, perfil, roles, foto)VALUES (:nombre, :usuario, :tipodoc, :numident, :telefono, :fechanac, :contrato, :fecingreso, :password, :perfil, :roles, :foto)");
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
@@ -56,6 +56,7 @@ class ModeloUsuarios{
 		$stmt->bindParam(":fecingreso", $datos["fecingreso"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+		$stmt->bindParam(":roles", $datos["roles"], PDO::PARAM_STR);
 		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
@@ -80,7 +81,7 @@ class ModeloUsuarios{
 
 	static public function mdlEditarUsuario($tabla, $datos){
 	
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET usuario = :usuario, tipodoc = :tipodoc, numident = :numident, telefono = :telefono, fechanac = :fechanac, contrato = :contrato, fecingreso = :fecingreso, password = :password, perfil = :perfil, foto = :foto WHERE nombre = :nombre");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET usuario = :usuario, tipodoc = :tipodoc, numident = :numident, telefono = :telefono, fechanac = :fechanac, contrato = :contrato, fecingreso = :fecingreso, password = :password, perfil = :perfil, roles = :roles, foto = :foto WHERE nombre = :nombre");
 
 		$stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
@@ -92,6 +93,7 @@ class ModeloUsuarios{
 		$stmt -> bindParam(":fecingreso", $datos["fecingreso"], PDO::PARAM_STR);
 		$stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt -> bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+		$stmt -> bindParam(":roles", $datos["roles"], PDO::PARAM_STR);
 		$stmt -> bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 		
 

@@ -29,6 +29,7 @@ session_start();
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vistas/bower_components/font-awesome/css/font-awesome.min.css">
+  
   <!-- Ionicons -->
   <link rel="stylesheet" href="vistas/bower_components/Ionicons/css/ionicons.min.css">
 
@@ -38,13 +39,9 @@ session_start();
   <!-- AdminLTE Skins -->
   <link rel="stylesheet" href="vistas/dist/css/skins/_all-skins.css">
 
-  <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href="vistas/plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href="vistas/plugins/fullcalendar/fullcalendar.print.css" media="print">
-
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  
   <!-- DataTables -->
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
@@ -96,9 +93,6 @@ session_start();
   <script src="vistas/plugins/input-mask/jquery.inputmask.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-
-  <!-- jQuery Number -->
-  <script src="vistas/plugins/jqueryNumber/jquerynumber.min.js"></script>
 
   <!--Bootstrap Datapiker  -->
   <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" charset="UTF-8"></script>
