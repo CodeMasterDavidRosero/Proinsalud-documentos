@@ -86,8 +86,16 @@ if($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == ""){
                   <td>'.($key+1).'</td>
                   <td>'.$value["nombre"].'</td>
                   <td>'.$value["usuario"].'</td>
-                  <td>'.$value["perfil"].'</td>
-                  <td>'.$value["roles"].'</td>
+                  <td>'.$value["perfil"].'</td>';
+
+        $itemRol = "id";
+        $valorRol = $value["roles"];
+
+        $respuestaRoles = ControladorRoles::ctrMostrarRoles($itemRol, $valorRol);
+
+          echo '  <td>'.$respuestaRoles["rol"].'</td>                  
+                  
+                  
                   <td>'.$value["fechanac"].'</td>
                   <td>'.$value["tipodoc"]." ".$value["numident"].'</td>
                   <td>'.$value["telefono"].'</td>
@@ -103,9 +111,7 @@ if($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == ""){
 
                     echo '<td><img src="vistas/img/usuarios/default/default.png" class="img-thumbnail" width="40px"></td>';
 
-                  }
-
-                                  
+                  }                                 
                   
 
                   if($value["estado"] != 0){
@@ -116,7 +122,7 @@ if($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == ""){
 
                     echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="'.$value["id"].'" estadoUsuario="1">Desactivado</button></td>';
 
-                  }                        
+                  }                   
 
                   echo '<td>'.$value["ultimo_login"].'</td>
                   <td>
@@ -264,7 +270,7 @@ MODAL AGREGAR USUARIO
               
                 <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-phone"></i></span> 
 
-                  <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoTelefono" placeholder="Teléfono" data-inputmask="'mask':'(999)-999-9999'" data-mask required>
+                <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoTelefono" placeholder="Teléfono" data-inputmask="'mask':'(999)-999-9999'" data-mask required>
 
               </div>
 
@@ -279,7 +285,7 @@ MODAL AGREGAR USUARIO
                         
               <div class="input-group date dp-date">
 
-                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span> 
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-birthday-cake"></i></span> 
               
                 <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFechanac" placeholder="Cumpleaños" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
@@ -383,19 +389,19 @@ MODAL AGREGAR USUARIO
 
                 <select class="form-control input-lg" name="nuevoRol" style="border-radius: 5px;">
                   
-                  <option value="">Selecionar Rol</option>
+                <option value="" id="editarRol">Selecionar Rol</option>
 
-                  <option value="1">Rol Administrador</option>
+                  <option value="1">Administración</option>
 
                   <option value="2">Direccionamiento Estratégico</option>
 
-                  <option value="3">Sistemas de gestión</option>
+                  <option value="3">Sistemas de Gestión</option>
 
-                  <option value="4">Gestión jurídica y asuntos empresariales</option>
+                  <option value="4">Gestión Jurídica y Asuntos Empresariales</option>
 
-                  <option value="5">Docencia y servicio</option>
+                  <option value="5">Docencia y Servicio</option>
 
-                  <option value="6">Gestión de servicios de aseguramiento</option>
+                  <option value="6">Gestión de Servicios de Aseguramiento</option>
 
                   <option value="7">Gestión Financiera</option>
 
@@ -405,9 +411,9 @@ MODAL AGREGAR USUARIO
 
                   <option value="10">Gestión de Recursos Humanos</option>
 
-                  <option value="11">Procesos asistenciales</option>
+                  <option value="11">Procesos Asistenciales</option>
 
-                  <option value="12">Procesos de apoyo</option>
+                  <option value="12">Procesos de Apoyo</option>
 
                   </select>
 
@@ -585,7 +591,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-users"></i></span> 
 
-                  <input type="text" class="form-control input-lg" id="editarTelefono" style="border-radius: 5px;" name="editarTelefono" data-inputmask="'mask':'999-999-9999'" data-mask>
+                  <input type="text" class="form-control input-lg" id="editarTelefono" style="border-radius: 5px;" name="editarTelefono"  data-inputmask="'mask':'999-999-9999'" data-mask required>
              
               </div>
 
@@ -703,21 +709,21 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-users"></i></span> 
 
-                <select class="form-control input-lg" style="border-radius:5px" name="editarRol">
+                <select class="form-control input-lg" style="border-radius:5px" name="editarRol" required min=1>
                   
                   <option value="" id="editarRol">Selecionar Rol</option>
 
-                  <option value="1">Rol Administrador</option>
+                  <option value="1">Administración</option>
 
                   <option value="2">Direccionamiento Estratégico</option>
 
-                  <option value="3">Sistemas de gestión</option>
+                  <option value="3">Sistemas de Gestión</option>
 
-                  <option value="4">Gestión jurídica y asuntos empresariales</option>
+                  <option value="4">Gestión Jurídica y Asuntos Empresariales</option>
 
-                  <option value="5">Docencia y servicio</option>
+                  <option value="5">Docencia y Servicio</option>
 
-                  <option value="6">Gestión de servicios de aseguramiento</option>
+                  <option value="6">Gestión de Servicios de Aseguramiento</option>
 
                   <option value="7">Gestión Financiera</option>
 
@@ -727,9 +733,9 @@ MODAL EDITAR USUARIO
 
                   <option value="10">Gestión de Recursos Humanos</option>
 
-                  <option value="11">Procesos asistenciales</option>
+                  <option value="11">Procesos Asistenciales</option>
 
-                  <option value="12">Procesos de apoyo</option>
+                  <option value="12">Procesos de Apoyo</option>
                   
                 </select>
 

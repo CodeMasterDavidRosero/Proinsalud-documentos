@@ -3,59 +3,37 @@
 require_once "../controladores/documentos.controlador.php";
 require_once "../modelos/documentos.modelo.php";
 
-class AjaxUsuarios{
+class AjaxDocumentos{
 
 	/*=============================================
-	EDITAR USUARIO
+	EDITAR DOCUMENTO
 	=============================================*/	
 
-	public $idUsuario;
+	public $idDocumento;
 
-	public function ajaxEditarUsuario(){
+	public function ajaxEditarDocumento(){
 
 		$item = "id";
-		$valor = $this->idUsuario;
+		$valor = $this->idDocumento;
 
-		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+		$respuesta = ControladorDocumentos::ctrMostrarDocumentos($item, $valor);
 
 		echo json_encode($respuesta);
 
-	}
-
-	/*=============================================
-	ACTIVAR USUARIO
-	=============================================*/	
-
-	public $activarUsuario;
-	public $activarId;
-
-
-	public function ajaxActivarUsuario(){
-
-		$tabla = "usuarios";
-
-		$item1 = "estado";
-		$valor1 = $this->activarUsuario;
-
-		$item2 = "id";
-		$valor2 = $this->activarId;
-
-		$respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
-
-	}
+	}	
 
 	/*=============================================
 	VALIDAR NO REPETIR DOCUMENTO
 	=============================================*/	
 
-	public $validarUsuario;
+	public $validarDocumento;
 
-	public function ajaxValidarUsuario(){
+	public function ajaxValidarDocumento(){
 
-		$item = "usuario";
-		$valor = $this->validarUsuario;
+		$item = "codigo";
+		$valor = $this->validarDocumento;
 
-		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+		$respuesta = ControladorDocumentos::ctrMostrarDocumentos($item, $valor);
 
 		echo json_encode($respuesta);
 
@@ -63,37 +41,25 @@ class AjaxUsuarios{
 }
 
 /*=============================================
-EDITAR USUARIO
+EDITAR REGISTRO DOCUMENTOS
 =============================================*/
-if(isset($_POST["idUsuario"])){
+if(isset($_POST["idDocumento"])){
 
-	$editar = new AjaxUsuarios();
-	$editar -> idUsuario = $_POST["idUsuario"];
-	$editar -> ajaxEditarUsuario();
+	$editar = new AjaxDocumentos();
+	$editar -> idDocumento = $_POST["idDocumento"];
+	$editar -> ajaxEditarDocumento();
 
 }
 
-/*=============================================
-ACTIVAR USUARIO
-=============================================*/	
-
-if(isset($_POST["activarUsuario"])){
-
-	$activarUsuario = new AjaxUsuarios();
-	$activarUsuario -> activarUsuario = $_POST["activarUsuario"];
-	$activarUsuario -> activarId = $_POST["activarId"];
-	$activarUsuario -> ajaxActivarUsuario();
-
-}
 
 /*=============================================
-VALIDAR NO REPETIR USUARIO
+VALIDAR NO REPETIR DOCUMENTO
 =============================================*/
 
-if(isset( $_POST["validarUsuario"])){
+if(isset( $_POST["validarDocumento"])){
 
-	$valUsuario = new AjaxUsuarios();
-	$valUsuario -> validarUsuario = $_POST["validarUsuario"];
-	$valUsuario -> ajaxValidarUsuario();
+	$valDocumento = new AjaxDocumentos();
+	$valDocumento -> validarDocumento = $_POST["validarDocumento"];
+	$valDocumento -> ajaxValidarDocumento();
 
 }

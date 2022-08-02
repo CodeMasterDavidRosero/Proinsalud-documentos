@@ -71,10 +71,8 @@
 						
 						<li class="user-body">
 							
-							<div class="pull-right">
-								
-							Haga clic para cerrar sesión...
-								<a href="salir" class="btn btn-danger">Salir</a>
+							<div>Haga Clic para Cerrar... 
+								<a href="salir" class="btn btn-danger" style="margin-left:15px">Salir</a>
 
 							</div>
 

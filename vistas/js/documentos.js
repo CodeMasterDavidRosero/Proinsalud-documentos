@@ -1,47 +1,47 @@
 
 /*=============================================
-SUBIENDO LA FOTO DEL USUARIO
+SUBIENDO EL DOCUMENTO
 =============================================*/
-$(".nuevaFoto").change(function(){
+$(".nuevaRuta").change(function(){
 
-	var imagen = this.files[0];
+	var documento = this.files[0];
 	
 	/*=============================================
   	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
   	=============================================*/
 
-  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+  	if(documento["type"] != "documento/xlsx" && documento["type"] != "documento/docx"){
 
-  		$(".nuevaFoto").val("");
+  		$(".nuevaRuta").val("");
 
   		 swal({
-		      title: "Error al subir la imagen",
-		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      title: "Error al subir la documento",
+		      text: "¡La documento debe estar en formato JPG o PNG!",
 		      type: "error",
 		      confirmButtonText: "¡Cerrar!"
 		    });
 
-  	}else if(imagen["size"] > 2000000){
+  	}else if(documento["size"] > 20000000){
 
-  		$(".nuevaFoto").val("");
+  		$(".nuevaRuta").val("");
 
   		 swal({
-		      title: "Error al subir la imagen",
-		      text: "¡La imagen no debe pesar más de 2MB!",
+		      title: "Error al subir la documento",
+		      text: "¡La documento no debe pesar más de 20MB!",
 		      type: "error",
 		      confirmButtonText: "¡Cerrar!"
 		    });
 
   	}else{
 
-  		var datosImagen = new FileReader;
-  		datosImagen.readAsDataURL(imagen);
+  		var datosDocumento = new FileReader;
+  		datosDocumento.readAsDataURL(documento);
 
-  		$(datosImagen).on("load", function(event){
+  		$(datosDocumento).on("load", function(event){
 
-  			var rutaImagen = event.target.result;
+  			var rutaDocumento = event.target.result;
 
-  			$(".previsualizar").attr("src", rutaImagen);
+  			$(".previsualizar").attr("src", rutaDocumento);
 
   		})
 
@@ -49,18 +49,18 @@ $(".nuevaFoto").change(function(){
 })
 
 /*=============================================
-EDITAR USUARIO
+EDITAR REGISTRO DOCUMENTO
 =============================================*/
-$(".tablas").on("click", ".btnEditarUsuario", function(){
+$(".tablas").on("click", ".btnEditarDocumento", function(){
 
-	var idUsuario = $(this).attr("idUsuario");
+	var idDocumento = $(this).attr("idDocumento");
 	
 	var datos = new FormData();
-	datos.append("idUsuario", idUsuario);
+	datos.append("idDocumento", idDocumento);
 
 	$.ajax({
 
-		url:"ajax/usuarios.ajax.php",
+		url:"ajax/documentos.ajax.php",
 		method: "POST",
 		data: datos,
 		cache: false,
@@ -105,82 +105,20 @@ $(".tablas").on("click", ".btnEditarUsuario", function(){
 })
 
 /*=============================================
-ACTIVAR USUARIO
-=============================================*/
-$(".tablas").on("click", ".btnActivar", function(){
-
-	var idUsuario = $(this).attr("idUsuario");
-	var estadoUsuario = $(this).attr("estadoUsuario");
-
-	var datos = new FormData();
- 	datos.append("activarId", idUsuario);
-  	datos.append("activarUsuario", estadoUsuario);
-
-  	$.ajax({
-
-	  url:"ajax/usuarios.ajax.php",
-	  method: "POST",
-	  data: datos,
-	  cache: false,
-      contentType: false,
-      processData: false,
-      success: function(respuesta){
-
-      		if(window.matchMedia("(max-width:767px)").matches){
-
-	      		 swal({
-			      title: "El usuario ha sido actualizado",
-			      type: "success",
-			      confirmButtonText: "¡Cerrar!"
-			    }).then(function(result) {
-			        if (result.value) {
-
-			        	window.location = "usuarios";
-
-			        }
-
-
-				});
-
-	      	}
-
-      }
-
-  	})
-
-  	if(estadoUsuario == 0){
-
-  		$(this).removeClass('btn-success');
-  		$(this).addClass('btn-danger');
-  		$(this).html('Desactivado');
-  		$(this).attr('estadoUsuario',1);
-
-  	}else{
-
-  		$(this).addClass('btn-success');
-  		$(this).removeClass('btn-danger');
-  		$(this).html('Activado');
-  		$(this).attr('estadoUsuario',0);
-
-  	}
-
-})
-
-/*=============================================
-REVISAR SI EL USUARIO YA ESTÁ REGISTRADO
+REVISAR SI EL DOCUMENTO YA ESTÁ REGISTRADO
 =============================================*/
 
-$("#nuevoUsuario").change(function(){
+$("#nuevoNombre").change(function(){
 
 	$(".alert").remove();
 
-	var usuario = $(this).val();
+	var document = $(this).val();
 
 	var datos = new FormData();
-	datos.append("validarUsuario", usuario);
+	datos.append("validarDocumento", document);
 
 	 $.ajax({
-	    url:"ajax/usuarios.ajax.php",
+	    url:"ajax/documentos.ajax.php",
 	    method:"POST",
 	    data: datos,
 	    cache: false,
@@ -191,9 +129,9 @@ $("#nuevoUsuario").change(function(){
 	    	
 	    	if(respuesta){
 
-	    		$("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>');
+	    		$("#nuevoNombre").parent().after('<div class="alert alert-warning">Este documento ya existe en la base de datos</div>');
 
-	    		$("#nuevoUsuario").val("");
+	    		$("#nuevoNombre").val("");
 
 	    	}
 
@@ -203,28 +141,28 @@ $("#nuevoUsuario").change(function(){
 })
 
 /*=============================================
-ELIMINAR USUARIO
+ELIMINAR DOCUMENTO
 =============================================*/
-$(".tablas").on("click", ".btnEliminarUsuario", function(){
+$(".tablas").on("click", ".btnEliminarDocumento", function(){
 
-  var idUsuario = $(this).attr("idUsuario");
-  var fotoUsuario = $(this).attr("fotoUsuario");
-  var usuario = $(this).attr("usuario");
+  var idDocumento = $(this).attr("idDocumento");
+  var fotoDocumento = $(this).attr("fotoDocumento");
+  var Documento = $(this).attr("documento");
 
   swal({
-    title: '¿Está seguro de borrar el usuario?',
+    title: '¿Está seguro de borrar el Documento?',
     text: "¡Si no lo está puede cancelar la accíón!",
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Si, borrar usuario!'
+      confirmButtonText: 'Si, borrar Documento!'
   }).then(function(result){
 
     if(result.value){
 
-      window.location = "index.php?ruta=usuarios&idUsuario="+idUsuario+"&usuario="+usuario+"&fotoUsuario="+fotoUsuario;
+      window.location = "index.php?ruta=documentos&idDocumento="+idDocumento+"&nombre="+nombre+"&RutaDocumento="+rutaDocumento;
 
     }
 

@@ -104,6 +104,7 @@ $(".tablas").on("click", ".btnEditarUsuario", function(){
 
 })
 
+
 /*=============================================
 ACTIVAR USUARIO
 =============================================*/
@@ -133,6 +134,7 @@ $(".tablas").on("click", ".btnActivar", function(){
 			      type: "success",
 			      confirmButtonText: "¡Cerrar!"
 			    }).then(function(result) {
+					console.log(respuesta);
 			        if (result.value) {
 
 			        	window.location = "usuarios";

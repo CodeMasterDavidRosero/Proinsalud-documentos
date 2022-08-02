@@ -26,12 +26,15 @@
 				</a>
 			</li>
 
-			<li>
-				<a href="usuarios">
-					<i class="fa fa-users"></i>
-					<span>Usuarios</span>
-				</a>
-			</li>
+			
+
+			<?php
+
+			if($_SESSION["perfil"] == "SuperAdmin"){
+
+			echo '<li><a href="usuarios"><i class="fa fa-users"></i><span>Usuarios</span></a></li>';
+			}
+			?>
 
 			<li>
 				<a href="salir">

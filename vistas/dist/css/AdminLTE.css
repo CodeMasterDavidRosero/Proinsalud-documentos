@@ -1150,7 +1150,7 @@ a:focus {
   margin-top: 9px;
   border-style:inherit;
   border-width: 1px;
-  opacity: 0.7;
+  opacity: 0.8;
 
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body:before,
@@ -1170,7 +1170,7 @@ a:focus {
   clear: both;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body a {
-  color: #444 !important;
+  color: #000 !important;
 }
 @media (max-width: 991px) {
   .navbar-nav > .user-menu > .dropdown-menu > .user-body a {
