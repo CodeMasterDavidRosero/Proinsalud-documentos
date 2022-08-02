@@ -5,7 +5,7 @@ if($_SESSION["perfil"] == "coordinador"){
 
   echo '<script>
 
-    window.location = "inicio";
+    window.location = "formularios";
 
   </script>';
 
@@ -21,11 +21,11 @@ if($_SESSION["perfil"] == "coordinador"){
 
     <div class="modal-content">
 
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data" name="form_docs" id="form_docs">
 
         <!--=====================================
-    CABEZA DEL MODAL
-    ======================================-->
+        CABEZA DEL MODAL
+        ======================================-->
 
         <section class="content-header" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
@@ -41,11 +41,11 @@ if($_SESSION["perfil"] == "coordinador"){
 
         </section>
 
-      </form>
+      <!-- </form> -->
 
       <div class="modal-content">
 
-        <form role="form" method="post" enctype="multipart/form-data" name="form_docs" id="form_docs">
+        <!-- <form role="form" method="post" enctype="multipart/form-data" > -->
 
           <!--=====================================
         CUERPO DEL MODAL
@@ -95,8 +95,9 @@ if($_SESSION["perfil"] == "coordinador"){
 
                     <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-barcode"></i></span>
 
-                    <input class="form-control input-lg" value="123456789" style="border-radius: 5px;"
-                     name="nuevoCodigo" id="nuevoCodigo" disabled>
+                    <input class="form-control input-lg" value="<?php $Object = new DateTime();
+                    $DateAndTime = $Object->format("Ymdms"); echo "$DateAndTime"; ?>" style="border-radius: 5px;"
+                     name="nuevoCodigo" id="nuevoCodigo" readonly>
 
                   </div>
 
@@ -207,16 +208,16 @@ if($_SESSION["perfil"] == "coordinador"){
                 <!-- ENTRADA PARA EL FECHA DE ELABORACION -->
 
                 <div class="col-xs-6">
-
-                  <div class="input-group date dp-date">
-
-                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span>
-
-                    <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFechaElaboracion" placeholder="Fecha de Elaboración" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
-
-                  </div>
-
-                </div>
+                        
+                        <div class="input-group date dp-date">
+          
+                          <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span> 
+                        
+                          <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFecingreso" placeholder="Fecha Ingreso" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+          
+                          </div>
+          
+                      </div>
 
               </div>
 
@@ -244,9 +245,9 @@ if($_SESSION["perfil"] == "coordinador"){
 
           </div>
 
-          <input type="hidden" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
-          <input type="hidden" name="idRoles" value="<?php echo $_SESSION["roles"]; ?>" id="idRoles">
-          <input type="hidden" name="nuevaRuta" value="vista/documentos">
+          <input type="" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
+          <input type="" name="idRoles" value="<?php echo $_SESSION["roles"]; ?>" id="idRoles">
+          <input type="" name="nuevaRuta" value="vista/documentos">
 
 
           <!--=====================================
@@ -258,21 +259,21 @@ if($_SESSION["perfil"] == "coordinador"){
             <button type="submit" class="btn btn-info" style="margin-right:10px">Guardar Documento</button>
 
           </div>
+          <?php
+
+          $crearFormulario = new ControladorFormularios();
+          $crearFormulario -> ctrCrearFormulario();
+
+          ?>
+          </div>    
 
         </form>
-
-        <?php
-
-        $crearFormulario = new ControladorFormularios();
-        $crearFormulario -> ctrCrearFormulario();
-
-        ?>
 
       </div>
 
     </div>
 
-    <br>
+    <!-- <br> -->
 
   </section>
 
