@@ -51,7 +51,7 @@ class ControladorFormularios{
 
 						if(result.value){
 						
-							window.location = "documentos";
+							window.location = "formularios";
 
 						}
 

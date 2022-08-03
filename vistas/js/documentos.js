@@ -143,11 +143,11 @@ $("#nuevoNombre").change(function(){
 /*=============================================
 ELIMINAR DOCUMENTO
 =============================================*/
-$(".tablas").on("click", ".btnEliminarDocumento", function(){
+$(".table").on("click", ".btnEliminarDocumento", function(){
 
   var idDocumento = $(this).attr("idDocumento");
-  var fotoDocumento = $(this).attr("fotoDocumento");
-  var Documento = $(this).attr("documento");
+  var rutaDocumento = $(this).attr("rutaDocumento");
+  var nombre = $(this).attr("nombre");
 
   swal({
     title: '¿Está seguro de borrar el Documento?',
@@ -157,12 +157,12 @@ $(".tablas").on("click", ".btnEliminarDocumento", function(){
     confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Si, borrar Documento!'
+      confirmButtonText: 'Si, borrar el Documento!'
   }).then(function(result){
 
     if(result.value){
 
-      window.location = "index.php?ruta=documentos&idDocumento="+idDocumento+"&nombre="+nombre+"&RutaDocumento="+rutaDocumento;
+      window.location = "index.php?ruta=documentos&idDocumento="+idDocumento+"&nombre="+nombre+"&rutaDocumento="+rutaDocumento;
 
     }
 

@@ -2,13 +2,13 @@
 
 require_once "conexion.php";
 
-class ModeloRoles{
+class ModeloMacros{
 
 	/*=============================================
-	MOSTRAR ROLES
+	MOSTRAR MACROPROCESO
 	=============================================*/
 
-	static public function mdlMostrarRoles($tabla, $item, $valor){
+	static public function mdlMostrarMacros($tabla, $item, $valor){
 
 		if($item != null){
 
@@ -30,9 +30,6 @@ class ModeloRoles{
 
 		}
 		
-
-		$stmt -> close();
-
 		$stmt = null;
 
 	}

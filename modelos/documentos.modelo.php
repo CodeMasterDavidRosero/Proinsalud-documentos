@@ -117,9 +117,7 @@ class ModeloDocumentos{
 
 			return "error";	
 
-		}
-
-		$stmt -> close();
+		}		
 
 		$stmt = null;
 

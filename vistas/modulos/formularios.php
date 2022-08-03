@@ -1,7 +1,7 @@
 <?php
 
 
-if($_SESSION["perfil"] == "coordinador"){
+if ($_SESSION["perfil"] == "coordinador") {
 
   echo '<script>
 
@@ -10,7 +10,6 @@ if($_SESSION["perfil"] == "coordinador"){
   </script>';
 
   return;
-
 }
 
 ?>
@@ -41,13 +40,13 @@ if($_SESSION["perfil"] == "coordinador"){
 
         </section>
 
-      <!-- </form> -->
+      </form>
 
       <div class="modal-content">
 
-        <!-- <form role="form" method="post" enctype="multipart/form-data" > -->
+        <form role="form" method="post" enctype="multipart/form-data"> 
 
-          <!--=====================================
+        <!--=====================================
         CUERPO DEL MODAL
         ======================================-->
 
@@ -96,8 +95,8 @@ if($_SESSION["perfil"] == "coordinador"){
                     <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-barcode"></i></span>
 
                     <input class="form-control input-lg" value="<?php $Object = new DateTime();
-                    $DateAndTime = $Object->format("Ymdms"); echo "$DateAndTime"; ?>" style="border-radius: 5px;"
-                     name="nuevoCodigo" id="nuevoCodigo" readonly>
+                                                                $DateAndTime = $Object->format("Ymdms");
+                                                                echo "$DateAndTime"; ?>" style="border-radius: 5px;" name="nuevoCodigo" id="nuevoCodigo" readonly>
 
                   </div>
 
@@ -123,16 +122,19 @@ if($_SESSION["perfil"] == "coordinador"){
 
                       $item = null;
                       $valor = null;
+                      $sel_macro = $_SESSION["roles"];
 
-                      $roles = ControladorRoles::ctrMostrarRoles($item, $valor);
 
-                      foreach ($roles as $key => $value) {
+                      $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
 
-                        if (is_null($value["menu_id"])) {
+                      foreach ($macros as $key => $value) {
 
-                          echo '<option value="' . $value["id"] . '">' . $value["rol"] . '</option>';
+                        if (($value["id"]) == $sel_macro) {
+
+                          echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
                         }
                       }
+
                       ?>
 
                     </select>
@@ -157,15 +159,15 @@ if($_SESSION["perfil"] == "coordinador"){
 
                       $item = null;
                       $valor = null;
-                      $sel_macro = 5;
+                      $sel_proce = $_SESSION["roles"];
 
-                      $roles = ControladorRoles::ctrMostrarRoles($item, $valor);
+                      $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
 
-                      foreach ($roles as $key => $value) {
+                      foreach ($proce as $key => $value) {
 
-                        if (($value["menu_id"]) == $sel_macro) {
+                        if (($value["menu_id"]) == $sel_proce) {
 
-                          echo '<option value="' . $value["menu_id"] . '">' . $value["rol"] . '</option>';
+                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
                         }
                       }
 
@@ -193,11 +195,23 @@ if($_SESSION["perfil"] == "coordinador"){
 
                       <option value="Vendedor">Seleccione un Grupo...</option>
 
-                      <option value="Procedimientos, instructivos, formatos, etc">Procedimientos, instructivos, formatos, etc</option>
+                      <?php
 
-                      <option value="TS, HOS, URG, UCIN, ETC, SST">TS, HOS, URG, UCIN, ETC, SST</option>
+                    $item = null;
+                    $valor = null;
+                    $sel_carpeta = $_SESSION["roles"];
 
-                      <option value="RMPN, REPOC, ETC">RMPN, REPOC, ETC</option>
+                    $carpes = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
+
+                    foreach ($carpes as $key => $value) {
+
+                      if (($value["menu_id"]) == $sel_carpeta) {
+
+                        echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
+                      }
+                    }
+
+                    ?>
 
                     </select>
 
@@ -208,16 +222,16 @@ if($_SESSION["perfil"] == "coordinador"){
                 <!-- ENTRADA PARA EL FECHA DE ELABORACION -->
 
                 <div class="col-xs-6">
-                        
-                        <div class="input-group date dp-date">
-          
-                          <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span> 
-                        
-                          <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFecingreso" placeholder="Fecha Ingreso" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
-          
-                          </div>
-          
-                      </div>
+
+                  <div class="input-group date dp-date">
+
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span>
+
+                    <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFecingreso" placeholder="Fecha de creación" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+
+                  </div>
+
+                </div>
 
               </div>
 
@@ -231,11 +245,12 @@ if($_SESSION["perfil"] == "coordinador"){
                 <div class="input-group">
 
                   <div class="panel">--Subir Documento--</div>
+                  <p class="help-block" style="font-size:10px">Tamaño Máximo: <b>20 MB</b></p>
 
-                  <input type="file" class="nuevoDocumento" name="nuevoDocumento" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                  text/plain, application/pdf, image/*">
-
+                  <input type="file" class="rutaDocumento" name="rutaDocumento">
+                  
                   <p class="help-block" style="color: rgb(0 123 255); font-size:12px">Tipo de Archivo: <b>WORD, EXCEL, PDF, PPT, JPGE, PNG</b></p>
+                  
 
                 </div>
 
@@ -245,14 +260,14 @@ if($_SESSION["perfil"] == "coordinador"){
 
           </div>
 
-          <input type="" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
-          <input type="" name="idRoles" value="<?php echo $_SESSION["roles"]; ?>" id="idRoles">
-          <input type="" name="nuevaRuta" value="vista/documentos">
+          <input type="hidden" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
+          <input type="hidden" name="idMacros" value="<?php echo $_SESSION["nombre_macros"]; ?>" id="idMacros">
+          <input type="hidden" name="nuevaRuta" value="vista/documentos/">
 
 
           <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
+          PIE DEL MODAL
+          ======================================-->
 
           <div class="modal-footer">
 
@@ -262,18 +277,21 @@ if($_SESSION["perfil"] == "coordinador"){
           <?php
 
           $crearFormulario = new ControladorFormularios();
-          $crearFormulario -> ctrCrearFormulario();
+          $crearFormulario->ctrCrearFormulario();
 
           ?>
-          </div>    
 
-        </form>
 
       </div>
 
-    </div>
 
-    <!-- <br> -->
+
+
+
+
+      </form>
+
+    </div>
 
   </section>
 

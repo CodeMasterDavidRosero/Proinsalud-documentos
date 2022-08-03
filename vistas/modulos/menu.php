@@ -1,28 +1,30 @@
-<aside class="main-sidebar" style="background: linear-gradient(45deg, #2f89fc 0%, #f39c12 100%); opacity:0.85;>
+<aside class="main-sidebar" style="background: linear-gradient(45deg, #2f89fc 0%, #f39c12 100%); opacity:0.85";>
 
 	 <section class="sidebar">
 
 		<ul class="sidebar-menu">
 
+			<br>
+
 			<li>
 				<a href="inicio">
 
 					<i class="fa fa-list-ol"></i>
-					<span>Menu Documentos</span>
+					<span style="font-size:18px;">Menu Documentos</span>
 				</a>
 			</li>
 
 			<li>
 				<a href="documentos">
 					<i class="fa fa-file-text"></i>
-					<span>Documentos</span>
+					<span style="font-size:18px;">Documentos</span>
 				</a>
 			</li>
 
 			<li>
 				<a href="formularios">
 					<i class="fa fa-plus"></i>
-					<span>Ingresar Documento</span>
+					<span style="font-size:18px;">Ingreso Documento</span>
 				</a>
 			</li>
 
@@ -32,14 +34,25 @@
 
 			if($_SESSION["perfil"] == "SuperAdmin"){
 
-			echo '<li><a href="usuarios"><i class="fa fa-users"></i><span>Usuarios</span></a></li>';
+			echo '<li><a href="usuarios"><i class="fa fa-users"></i><span style="font-size:18px;">Usuarios</span></a></li>';
 			}
 			?>
-
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<li>
 				<a href="salir">
 					<i class="fa fa-sign-out"></i>
-					<span>Cerrar</span>
+					<span style="font-size:18px;">Salir</span>
 				</a>
 			</li>
 

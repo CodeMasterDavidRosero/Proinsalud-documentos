@@ -5,7 +5,7 @@ SideBar Menu
 $('.sidebar-menu').tree()
 
 /*=============================================
-Data Table
+Data Table  https://www.youtube.com/watch?v=yGBk9Nalyq8  MIRAR ESTE VIDEO 
 =============================================*/
 
 $(".tablas").DataTable({
@@ -36,5 +36,7 @@ $(".tablas").DataTable({
 		}
 
 	}
+
+
 
 });

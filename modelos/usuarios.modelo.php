@@ -1,4 +1,3 @@
-
 <?php
 
 require_once "conexion.php";
@@ -31,9 +30,6 @@ class ModeloUsuarios{
 
 		}
 		
-
-		$stmt -> close();
-
 		$stmt = null;
 
 	}
@@ -68,8 +64,6 @@ class ModeloUsuarios{
 			return "error";
 		
 		}
-
-		$stmt->close();
 		
 		$stmt = null;
 
@@ -107,8 +101,6 @@ class ModeloUsuarios{
 
 		}
 
-		$stmt -> close();
-
 		$stmt = null;
 
 	}
@@ -134,8 +126,6 @@ class ModeloUsuarios{
 
 		}
 
-		$stmt -> close();
-
 		$stmt = null;
 
 	}
@@ -159,9 +149,7 @@ class ModeloUsuarios{
 			return "error";	
 
 		}
-
-		$stmt -> close();
-
+		
 		$stmt = null;
 
 
