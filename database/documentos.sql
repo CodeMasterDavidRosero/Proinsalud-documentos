@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-08-2022 a las 08:14:54
+-- Tiempo de generación: 04-08-2022 a las 01:10:47
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.33
 
@@ -80,12 +80,21 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `codigo`, `version`, `nombre`, `fecha_elaboracion`, `fecha_actualizacion`, `fecha_ultima_revision`, `fecha_publicacion`, `macroproceso`, `proceso`, `grupo`, `usuario`, `url`) VALUES
-(10, '202208020809', '1', 'Nuevo Texto', '2022-08-02', '2022-08-02 15:37:00', '2022-08-02 15:37:00', '2022-08-02 15:37:00', '3', '3', '3', '1', 'vista/documentos'),
-(12, '202208030812', '2', 'Nuevo Texto XLS', '2022-08-02', '2022-08-03 00:53:57', '2022-08-03 00:53:57', '2022-08-03 00:53:57', '5', '5', '5', '1', 'vista/documentos'),
-(13, '202208030838', '2', 'Nuevo doc 2022', '2022-08-02', '2022-08-03 04:55:59', '2022-08-03 04:55:59', '2022-08-03 04:55:59', '1', '3', '11', '3', 'vista/documentos'),
-(14, '202208030849', '15', 'Guia de Atención al Paciente', '2022-08-03', '2022-08-03 05:02:26', '2022-08-03 05:02:26', '2022-08-03 05:02:26', '10', '4', '10', '3', 'vista/documentos'),
 (15, '202208030852', '1', 'Documento uno', '2022-08-03', '2022-08-03 05:17:34', '2022-08-03 05:17:34', '2022-08-03 05:17:34', '10', '10', '10', '3', 'vista/documentos/'),
-(16, '202208030849', '3', 'documento 2', '2022-08-03', '2022-08-03 05:18:18', '2022-08-03 05:18:18', '2022-08-03 05:18:18', '10', '10', '10', '3', 'vista/documentos/');
+(16, '202208030849', '3', 'documento 2', '2022-08-03', '2022-08-03 05:18:18', '2022-08-03 05:18:18', '2022-08-03 05:18:18', '10', '10', '10', '3', 'vista/documentos/'),
+(17, '202208030822', '1', 'Nuevo Doc1', '2022-08-03', '2022-08-03 17:46:18', '2022-08-03 17:46:18', '2022-08-03 17:46:18', '1', '1', '1', '1', 'vista/documentos/'),
+(19, '202208030819', '1', 'Docuemento Inicial', '2022-08-03', '2022-08-03 17:53:26', '2022-08-03 17:53:26', '2022-08-03 17:53:26', '1', '1', '1', '1', 'vista/documentos/'),
+(23, '202208030848', '1', 'himno republica de colombia', '2022-08-03', '2022-08-03 21:29:17', '2022-08-03 21:29:17', '2022-08-03 21:29:17', '1', '1', '1', '1', 'vista/documentos/'),
+(24, '202208030830', '1', 'docu prieb', '2022-08-03', '2022-08-03 21:35:48', '2022-08-03 21:35:48', '2022-08-03 21:35:48', '1', '1', '1', '1', 'vista/documentos/'),
+(25, '202208030803', '1', 'Docu pruebas doc', '2022-08-03', '2022-08-03 21:54:30', '2022-08-03 21:54:30', '2022-08-03 21:54:30', '1', '1', '1', '1', 'vista/documentos/'),
+(26, '202208040850', '1', 'David Ro', '2022-08-03', '2022-08-03 22:13:09', '2022-08-03 22:13:09', '2022-08-03 22:13:09', '1', '1', '1', '1', 'vista/documentos/'),
+(27, '202208040836', '1', 'Prueba 447', '2022-08-03', '2022-08-03 22:16:55', '2022-08-03 22:16:55', '2022-08-03 22:16:55', '1', '1', '1', '1', 'vista/documentos/'),
+(28, '202208040855', '1', 'LmDSMF', '2022-08-03', '2022-08-03 22:18:20', '2022-08-03 22:18:20', '2022-08-03 22:18:20', '1', '1', '1', '1', 'vista/documentos/'),
+(29, '202208040840', '1', 'David R', '2022-08-03', '2022-08-03 22:19:57', '2022-08-03 22:19:57', '2022-08-03 22:19:57', '1', '1', '1', '1', 'vista/documentos/'),
+(30, '202208040843', '1', 'Prueba exitosa', '2022-08-03', '2022-08-03 22:31:03', '2022-08-03 22:31:03', '2022-08-03 22:31:03', '1', '1', '1', '1', 'vista/documentos/'),
+(33, '202208040831', '3', 'Documento de Prueba', '2022-08-03', '2022-08-03 22:38:52', '2022-08-03 22:38:52', '2022-08-03 22:38:52', '1', '1', '1', '1', 'vista/documentos/'),
+(34, '202208040853', '7', 'Prueba exitosa', '2022-08-03', '2022-08-03 22:40:24', '2022-08-03 22:40:24', '2022-08-03 22:40:24', '1', '1', '1', '1', 'vista/documentos/'),
+(35, '202208040815', '3', 'Prueba Documento', '2022-08-03', '2022-08-03 23:05:55', '2022-08-03 23:05:55', '2022-08-03 23:05:55', '1', '1', '1', '1', 'vista/documentos/proinsalud/');
 
 -- --------------------------------------------------------
 
@@ -201,10 +210,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `tipodoc`, `numident`, `telefono`, `fechanac`, `contrato`, `fecingreso`, `password`, `perfil`, `roles`, `foto`, `estado`, `ultimo_login`, `fecha`) VALUES
-(1, 'David Fernando Rosero Guerrero', 'DRosero', 'C.C.', 87217075, '317-844-4099', '1984-01-07', 'indefinido', '2019-08-05', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'SuperAdmin', '1', 'vistas/img/usuarios/David Rosero/500.jpg', 1, '2022-08-03 00:43:20', '2022-08-03 00:43:25'),
+(1, 'David Fernando Rosero Guerrero', 'DRosero', 'C.C.', 87217075, '317-844-4099', '1984-01-07', 'indefinido', '2019-08-05', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'SuperAdmin', '1', 'vistas/img/usuarios/David Rosero/500.jpg', 1, '2022-08-03 18:01:10', '2022-08-03 18:01:10'),
 (2, 'Alejandro Fernandez', 'AlejoFer', 'C.C.', 123456789, '314-505-4444', '2001-01-31', 'Horas', '2021-09-10', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Administrador', '1', 'vistas/img/usuarios/AlejoFer/500.png', 1, '2022-08-01 23:49:12', '2022-08-03 00:43:26'),
 (3, 'Lorena Patricia Narvaez', 'LoreNarvaez', 'C.C.', 1085246058, '31478440568', '2022-06-26', 'Horas', '2022-06-26', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Coordinador', '10', 'vistas/img/usuarios/LoreNarvaez/762.jpg', 1, '2022-08-03 00:16:47', '2022-08-03 00:16:47'),
-(7, 'Santiago Andres Paz Oquendo', 'SPaz', 'RUT', 1878431, '3134557879', '2022-06-28', 'Horas', '2022-06-28', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Coordinador', '5', 'vistas/img/usuarios/Aremlp/479.png', 1, '2022-08-02 22:25:16', '2022-08-02 22:25:16');
+(7, 'Santiago Andres Paz Oquendo', 'SPaz', 'RUT', 1878431, '3134557879', '2022-06-28', 'Horas', '2022-06-28', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Coordinador', '5', 'vistas/img/usuarios/Aremlp/479.png', 1, '2022-08-03 17:47:35', '2022-08-03 17:47:35');
 
 --
 -- Índices para tablas volcadas
@@ -255,13 +264,13 @@ ALTER TABLE `carpetas`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `macros`
 --
 ALTER TABLE `macros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `procesos`
@@ -273,7 +282,7 @@ ALTER TABLE `procesos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

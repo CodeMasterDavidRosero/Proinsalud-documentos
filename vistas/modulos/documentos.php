@@ -61,7 +61,7 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                   <th>Grupo</th>
                   <th>Usuario</th>
                   <th>URL</th>
-                  <th style="width: 100%;">Acciones</th>
+                  <th style="width: 100px;">Acciones</th>
 
                 </tr>
 
@@ -116,15 +116,19 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
 
                     <button class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>
                     
-                    <button class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
+
+                    if($_SESSION["perfil"] == "SuperAdmin"){
                   
-                    <button class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
+                    echo '<button class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
+                   
 
                     </div>  
 
                   </td>
 
                 </tr>';
+                };
                 }
 
                 ?>
@@ -478,4 +482,3 @@ EDITAR REGISTRO DE DOCUMENTOS
 
   </div>
 
-</div>

@@ -19,7 +19,39 @@ class ControladorFormularios{
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ, ]+$/', $_POST["nuevoGrupo"]) &&
 			   preg_match('/^[0-9]+$/', $_POST["idUsuario"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\/\ ]+$/', $_POST["nuevaRuta"])){
-	   														
+
+				/*=============================================
+				VALIDACION DE DOCUMENTO
+				=============================================*/
+							
+				if(isset($_FILES["rutaDocumento"]["tmp_name"])){
+
+						$nombreDoc = $_FILES["rutaDocumento"]["name"];
+						$nombreTmp = $_FILES["rutaDocumento"]["tmp_name"];
+
+						$extenDoc = explode('.', $nombreDoc);
+						$actualDocExt = strtolower(end($extenDoc)); 
+
+						/*=============================================
+						DIRECTORIO DE RUTA LOCAL ALMACENAMIENTO
+						=============================================*/
+
+						$nuevoNombreDoc = uniqid('', true).".".$actualDocExt;
+	
+						$directorio = 'vistas/documentos/proinsalud/'.$_POST["nuevoNombre"];
+
+						$destino = 'vistas/documentos/proinsalud/'.$_POST["nuevoNombre"]."/".$nuevoNombreDoc;
+						
+						mkdir($directorio, 0755);
+
+						move_uploaded_file($nombreTmp, $destino);
+	
+						/*=============================================
+						GUARDAR EL DOCUMENTO
+						=============================================*/
+	
+				}
+			
 				$tabla = "documentos";
 				
 				$datos = array("codigo" => $_POST["nuevoCodigo"],

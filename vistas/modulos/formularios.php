@@ -44,9 +44,9 @@ if ($_SESSION["perfil"] == "coordinador") {
 
       <div class="modal-content">
 
-        <form role="form" method="post" enctype="multipart/form-data"> 
+        <form role="form" method="post" enctype="multipart/form-data">
 
-        <!--=====================================
+          <!--=====================================
         CUERPO DEL MODAL
         ======================================-->
 
@@ -197,21 +197,21 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                       <?php
 
-                    $item = null;
-                    $valor = null;
-                    $sel_carpeta = $_SESSION["roles"];
+                      $item = null;
+                      $valor = null;
+                      $sel_carpeta = $_SESSION["roles"];
 
-                    $carpes = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
+                      $carpes = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
 
-                    foreach ($carpes as $key => $value) {
+                      foreach ($carpes as $key => $value) {
 
-                      if (($value["menu_id"]) == $sel_carpeta) {
+                        if (($value["menu_id"]) == $sel_carpeta) {
 
-                        echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
+                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
+                        }
                       }
-                    }
 
-                    ?>
+                      ?>
 
                     </select>
 
@@ -248,9 +248,8 @@ if ($_SESSION["perfil"] == "coordinador") {
                   <p class="help-block" style="font-size:10px">Tamaño Máximo: <b>20 MB</b></p>
 
                   <input type="file" class="rutaDocumento" name="rutaDocumento">
-                  
+
                   <p class="help-block" style="color: rgb(0 123 255); font-size:12px">Tipo de Archivo: <b>WORD, EXCEL, PDF, PPT, JPGE, PNG</b></p>
-                  
 
                 </div>
 
@@ -262,7 +261,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
           <input type="hidden" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
           <input type="hidden" name="idMacros" value="<?php echo $_SESSION["nombre_macros"]; ?>" id="idMacros">
-          <input type="hidden" name="nuevaRuta" value="vista/documentos/">
+          <input type="hidden" name="nuevaRuta" value="vista/documentos/proinsalud/">
 
 
           <!--=====================================
@@ -283,11 +282,6 @@ if ($_SESSION["perfil"] == "coordinador") {
 
 
       </div>
-
-
-
-
-
 
       </form>
 

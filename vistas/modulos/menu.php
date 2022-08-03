@@ -21,12 +21,19 @@
 				</a>
 			</li>
 
-			<li>
+			
+			<?php
+
+			if($_SESSION["perfil"] == "SuperAdmin"){
+
+			echo '<li>
 				<a href="formularios">
 					<i class="fa fa-plus"></i>
 					<span style="font-size:18px;">Ingreso Documento</span>
 				</a>
-			</li>
+			</li>';
+			}
+			?>
 
 			
 
