@@ -30,15 +30,20 @@ class ControladorFormularios{
 						$nombreTmp = $_FILES["rutaDocumento"]["tmp_name"];
 
 						$extenDoc = explode('.', $nombreDoc);
+
 						$actualDocExt = strtolower(end($extenDoc)); 
+
+						$nuevoNombreDoc = uniqid('', true).".".$actualDocExt;
 
 						/*=============================================
 						DIRECTORIO DE RUTA LOCAL ALMACENAMIENTO
 						=============================================*/
-
-						$nuevoNombreDoc = uniqid('', true).".".$actualDocExt;
 	
 						$directorio = 'vistas/documentos/proinsalud/'.$_POST["nuevoNombre"];
+
+						/*=============================================
+						GUARDAR EL DOCUMENTO
+						=============================================*/
 
 						$destino = 'vistas/documentos/proinsalud/'.$_POST["nuevoNombre"]."/".$nuevoNombreDoc;
 						
@@ -46,9 +51,7 @@ class ControladorFormularios{
 
 						move_uploaded_file($nombreTmp, $destino);
 	
-						/*=============================================
-						GUARDAR EL DOCUMENTO
-						=============================================*/
+						
 	
 				}
 			
@@ -62,8 +65,7 @@ class ControladorFormularios{
 							   "proceso" => $_POST["nuevoProceso"],
 							   "grupo" => $_POST["nuevoGrupo"],
 							   "usuario" => $_POST["idUsuario"],							   					           					   
-							   "url" => $_POST["nuevaRuta"],
-					           );
+							   "url" => $destino);
 							   
 
 				$respuesta = ModeloFormularios::mdlIngresarFormulario($tabla, $datos);

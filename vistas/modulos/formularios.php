@@ -116,9 +116,22 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <select class="form-control input-lg" id="nuevoMacro" name="nuevoMacro" style="border-radius: 5px;" required>
 
-                      <option value=""> Seleccione un Macroproceso...</option>
+                      <option value="">--Seleccione un Macroproceso--</option>
 
                       <?php
+
+                      if (($_SESSION["perfil"]) == "SuperAdmin") {
+
+                        $itemS = null;
+                        $valorS = null;
+
+                        $macros = ControladorMacros::ctrMostrarMacros($itemS, $valorS);
+
+                        foreach ($macros as $key => $value) {
+
+                          echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
+                        }
+                      } else {
 
                       $item = null;
                       $valor = null;
@@ -134,6 +147,8 @@ if ($_SESSION["perfil"] == "coordinador") {
                           echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
                         }
                       }
+
+                    }
 
                       ?>
 
@@ -153,9 +168,21 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <select class="form-control input-lg" id="nuevoProceso" name="nuevoProceso" style="border-radius: 5px;" required>
 
-                      <option name="selProceso">Seleccione un Proceso...</option>
+                      <option value="">--Seleccione un Proceso--</option>
 
                       <?php
+
+                      if (($_SESSION["perfil"]) == "SuperAdmin") {
+
+                        $itemS = null;
+                        $valorS = null;
+                        $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
+
+                        foreach ($proce as $key => $value) {
+
+                            echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                        }
+                      } else {
 
                       $item = null;
                       $valor = null;
@@ -170,6 +197,7 @@ if ($_SESSION["perfil"] == "coordinador") {
                           echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
                         }
                       }
+                    }
 
                       ?>
 
@@ -193,9 +221,17 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <select class="form-control input-lg" name="nuevoGrupo" id="nuevoGrupo" style="border-radius: 5px;" required>
 
-                      <option value="Vendedor">Seleccione un Grupo...</option>
+                      <option value="">--Seleccione un Grupo--</option>
 
                       <?php
+
+                      if (($_SESSION["perfil"]) == "SuperAdmin") {
+
+                        echo '<option value="10">Procedimientos, instructivos, formatos, etc</option>
+                              <option value="11">TS, HOS, URG, UCIN, ETC, SST</option>
+                              <option value="12">RMPN, REPOC, ETC</option>';
+
+                      }else {
 
                       $item = null;
                       $valor = null;
@@ -210,6 +246,7 @@ if ($_SESSION["perfil"] == "coordinador") {
                           echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
                         }
                       }
+                    }
 
                       ?>
 
@@ -247,7 +284,7 @@ if ($_SESSION["perfil"] == "coordinador") {
                   <div class="panel">--Subir Documento--</div>
                   <p class="help-block" style="font-size:10px">Tamaño Máximo: <b>20 MB</b></p>
 
-                  <input type="file" class="rutaDocumento" name="rutaDocumento">
+                  <input type="file" class="rutaDocumento" name="rutaDocumento" required>
 
                   <p class="help-block" style="color: rgb(0 123 255); font-size:12px">Tipo de Archivo: <b>WORD, EXCEL, PDF, PPT, JPGE, PNG</b></p>
 

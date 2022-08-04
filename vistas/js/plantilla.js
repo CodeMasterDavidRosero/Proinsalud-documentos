@@ -8,15 +8,9 @@ $('.sidebar-menu').tree()
 Data Table  
 
 Pendientes:
-
--Filtrar guardar el docuemento por tipo de documento.
--Visualizar en el modal el archivo. arreglar PDF con descargar
 -Terminar modal de Editar Usuario. pie de forma
-
-
-
--Crear en Hidden un buscador con el id de Session:
-https://www.youtube.com/watch?v=yGBk9Nalyq8
+-Visualizar en el modal el archivo. (Consultar como ver cualquier archivo en un modal pdf)
+-Crear en Hidden un buscador con el id de Session: (https://www.youtube.com/watch?v=yGBk9Nalyq8)
 
 =============================================*/
 

@@ -30,10 +30,7 @@ class ModeloDocumentos{
 			return $stmt -> fetchAll();
 
 		}
-		
-
-		$stmt -> close();
-
+	
 		$stmt = null;
 
 	}	
@@ -66,8 +63,6 @@ class ModeloDocumentos{
 
 		}
 
-		$stmt -> close();
-
 		$stmt = null;
 
 	}
@@ -92,8 +87,6 @@ class ModeloDocumentos{
 			return "error";	
 
 		}
-
-		$stmt -> close();
 
 		$stmt = null;
 

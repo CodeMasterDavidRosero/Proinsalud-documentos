@@ -61,7 +61,7 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                   <th>Grupo</th>
                   <th>Usuario</th>
                   <th>URL</th>
-                  <th style="width: 100px;">Acciones</th>
+                  <th>Acciones</th>
 
                 </tr>
 
@@ -110,25 +110,27 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                  
                   <td>' . $value["url"] . '</td>';
 
-                  echo '<td>
+                  echo '<td align="center">
                       
                   <div class="btn-group">
 
-                    <button class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>
-                    
-                    <button class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
+                  <a class="btn btn-success" target="_black" href="' . $value["url"] . '">';
+                  echo '<i class="fa fa-download"></i></a>
 
-                    if($_SESSION["perfil"] == "SuperAdmin"){
-                  
+                    <button class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>';
+
+                  if ($_SESSION["perfil"] == "SuperAdmin") {
+
                     echo '<button class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
-                   
 
-                    </div>  
+                    <button class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
+                  }
+
+                  echo '</div>
 
                   </td>
 
                 </tr>';
-                };
                 }
 
                 ?>
@@ -250,7 +252,7 @@ EDITAR REGISTRO DE DOCUMENTOS
 
           <div class="box-body">
 
-          <!-- ENTRADA PARA CODIGO CONCATENADO-->
+            <!-- ENTRADA PARA CODIGO CONCATENADO-->
 
             <div class="form-group row">
 
@@ -481,4 +483,3 @@ EDITAR REGISTRO DE DOCUMENTOS
     </div>
 
   </div>
-

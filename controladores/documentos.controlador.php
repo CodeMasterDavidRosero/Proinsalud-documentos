@@ -127,7 +127,7 @@ class ControladorDocumentos{
 			if($_GET["rutaDocumento"] != ""){
 
 				unlink($_GET["rutaDocumento"]);
-				rmdir('vistas/img/documentos/'.$_GET["nombre"]);
+				rmdir('vistas/documentos/proinsalud/'.$_GET["nombre"]);
 
 			}
 

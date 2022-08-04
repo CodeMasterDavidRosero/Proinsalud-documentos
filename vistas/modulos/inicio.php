@@ -6,7 +6,7 @@
 
       <form role="form" method="post" enctype="multipart/form-data">
 
-    <!--=====================================
+        <!--=====================================
     CABEZA DEL MODAL
     ======================================-->
 
@@ -49,21 +49,36 @@
 
                   <select class="form-control input-lg" name="SelMacro" id="SelMacro" style="border-radius: 5px;">
 
-                    <option value="" id="editarRol">--Seleccionar Macroproceso--</option>
+                    <option value="" id="">--Seleccionar Macroproceso--</option>
 
                     <?php
 
-                    $item = null;
-                    $valor = null;
-                    $sel_macro = $_SESSION["roles"];
+                    if (($_SESSION["perfil"]) == "SuperAdmin") {
 
-                    $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
+                      $itemS = null;
+                      $valorS = null;
 
-                    foreach ($macros as $key => $value) {
+                      $macros = ControladorMacros::ctrMostrarMacros($itemS, $valorS);
 
-                      if (($value["id"]) == $sel_macro) {
+                      foreach ($macros as $key => $value) {
 
                         echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
+                      }
+                    } else {
+
+                      $item = null;
+                      $valor = null;
+                      $sel_macro = $_SESSION["roles"];
+
+
+                      $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
+
+                      foreach ($macros as $key => $value) {
+
+                        if (($value["id"]) == $sel_macro) {
+
+                          echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
+                        }
                       }
                     }
 
@@ -73,7 +88,7 @@
 
                   <input type="hidden" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
                   <input type="hidden" name="idRol" value="<?php echo $_SESSION["roles"]; ?>" id="idRol">
-
+                  
                 </div>
 
               </div>
@@ -90,19 +105,32 @@
 
                     <option name="selProceso">--Seleccione un Proceso--</option>
 
-                    <?php
+                    <?php             
 
-                    $item = null;
-                    $valor = null;
-                    $sel_proce = $_SESSION["roles"];
+                    if (($_SESSION["perfil"]) == "SuperAdmin") {
 
-                    $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
+                      $itemS = null;
+                      $valorS = null;
+                      $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
 
-                    foreach ($proce as $key => $value) {
+                      foreach ($proce as $key => $value) {
 
-                      if (($value["menu_id"]) == $sel_proce) {
+                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                      }
+                    } else {
 
-                        echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                      $item = null;
+                      $valor = null;
+                      $sel_proce = $_SESSION["roles"];
+
+                      $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
+
+                      foreach ($proce as $key => $value) {
+
+                        if (($value["menu_id"]) == $sel_proce) {
+
+                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                        }
                       }
                     }
 
@@ -124,9 +152,16 @@
 
                   <select class="form-control input-lg" name="seleccionarDocumento" style="border-radius: 5px;">
 
-                    <option value="Vendedor">--Seleccione un Grupo--</option>
+                    <option value="">--Seleccione un Grupo--</option>
 
                     <?php
+                    if (($_SESSION["perfil"]) == "SuperAdmin") {
+
+                          echo '<option value="10">Procedimientos, instructivos, formatos, etc</option>
+                                <option value="11">TS, HOS, URG, UCIN, ETC, SST</option>
+                                <option value="12">RMPN, REPOC, ETC</option>';
+                       
+                    }else {
 
                     $item = null;
                     $valor = null;
@@ -141,6 +176,7 @@
                         echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
                       }
                     }
+                  }
 
                     ?>
 
