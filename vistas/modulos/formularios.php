@@ -1,6 +1,5 @@
 <?php
 
-
 if ($_SESSION["perfil"] == "coordinador") {
 
   echo '<script>
@@ -70,8 +69,6 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                 </div>
 
-
-
                 <!-- ENTRADA PARA LA VERSION DOCUMENTO -->
 
                 <div class="col-xs-3">
@@ -133,22 +130,20 @@ if ($_SESSION["perfil"] == "coordinador") {
                         }
                       } else {
 
-                      $item = null;
-                      $valor = null;
-                      $sel_macro = $_SESSION["roles"];
+                        $item = null;
+                        $valor = null;
+                        $sel_macro = $_SESSION["roles"];
 
+                        $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
 
-                      $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
+                        foreach ($macros as $key => $value) {
 
-                      foreach ($macros as $key => $value) {
+                          if (($value["id"]) == $sel_macro) {
 
-                        if (($value["id"]) == $sel_macro) {
-
-                          echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
+                            echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
+                          }
                         }
                       }
-
-                    }
 
                       ?>
 
@@ -180,24 +175,24 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                         foreach ($proce as $key => $value) {
 
-                            echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
                         }
                       } else {
 
-                      $item = null;
-                      $valor = null;
-                      $sel_proce = $_SESSION["roles"];
+                        $item = null;
+                        $valor = null;
+                        $sel_proce = $_SESSION["roles"];
 
-                      $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
+                        $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
 
-                      foreach ($proce as $key => $value) {
+                        foreach ($proce as $key => $value) {
 
-                        if (($value["menu_id"]) == $sel_proce) {
+                          if (($value["menu_id"]) == $sel_proce) {
 
-                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                            echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                          }
                         }
                       }
-                    }
 
                       ?>
 
@@ -230,23 +225,22 @@ if ($_SESSION["perfil"] == "coordinador") {
                         echo '<option value="10">Procedimientos, instructivos, formatos, etc</option>
                               <option value="11">TS, HOS, URG, UCIN, ETC, SST</option>
                               <option value="12">RMPN, REPOC, ETC</option>';
+                      } else {
 
-                      }else {
+                        $item = null;
+                        $valor = null;
+                        $sel_carpeta = $_SESSION["roles"];
 
-                      $item = null;
-                      $valor = null;
-                      $sel_carpeta = $_SESSION["roles"];
+                        $carpes = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
 
-                      $carpes = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
+                        foreach ($carpes as $key => $value) {
 
-                      foreach ($carpes as $key => $value) {
+                          if (($value["menu_id"]) == $sel_carpeta) {
 
-                        if (($value["menu_id"]) == $sel_carpeta) {
-
-                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
+                            echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
+                          }
                         }
                       }
-                    }
 
                       ?>
 
@@ -272,16 +266,131 @@ if ($_SESSION["perfil"] == "coordinador") {
 
               </div>
 
-              <!-- ENTRADA PARA SUBIR EL DOCUMENTO -->
-              <br>
+              <!-- ENTRADA PARA ETAPA DEL CICLO -->
 
-              <br>
+              <div class="form-group row">
 
-              <div class="form-group">
+                <div class="col-xs-6">
+
+                  <div class="input-group">
+
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-repeat"></i></span>
+
+                    <select class="form-control input-lg" name="nuevoCiclo" id="nuevoCiclo" style="border-radius: 5px;" required>
+
+                      <option value="">--Seleccione la Etapa del Ciclo--</option>
+
+                      <option value="P">P - Planear</option>
+
+                      <option value="H">H - Hacer</option>
+
+                      <option value="V">V - Verificar</option>
+
+                      <option value="A">A - Actuar</option>
+
+                    </select>
+
+                  </div>
+
+                </div>
+
+                <!-- Entrada de la última Fecha de Revisión -->
+
+                <div class="col-xs-6">
+
+                  <div class="input-group date dp-date">
+
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span>
+
+                    <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevaFechaUltimaRev" placeholder="Fecha de última Revisión" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Entrada para Origen del documento -->
+
+              <div class="form-group row">
+
+                <div class="col-xs-6">
+
+                  <div class="input-group">
+
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-exchange"></i></span>
+
+                    <select class="form-control input-lg" name="nuevoOrigen" id="nuevoOrigen" style="border-radius: 5px;" required>
+
+                      <option value="">--Seleccione el Origen--</option>
+
+                      <option value="I">I - Interno</option>
+
+                      <option value="E">E - Externo</option>
+
+                    </select>
+
+                  </div>
+
+                </div>
+
+                <!--Entrada para la vista General -->
+
+                <div class="col-xs-6">
+
+                  <div class="input-group">
+
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-eye"></i></span>
+
+                    <select class="form-control input-lg" name="nuevoVista" id="nuevoVista" style="border-radius: 5px;" required>
+
+                      <option value="">¿Tiene Vista General?</option>
+
+                      <option value="0">NO - Restingida</option>
+
+                      <option value="1">SI - Invitados</option>
+
+                    </select>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!--Entrada para las documentos relacionados -->
+
+              <div class="form group row">
+
+                <div class="col-xs-6">
+
+                  <div class="input-group">
+
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-files-o"></i></span>
+
+                    <textarea class="form-control input-lg" placeholder="Documentos Relacionados..." name="nuevoRelacionados" id="nuevoRelacionados" style="border-radius: 5px; resize:initial" required></textarea>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA SUBIR EL DOCUMENTO -->
+            <br>
+
+            <br>
+
+            <div class="form-group">
+
+              <div class="col-xs-6">
 
                 <div class="input-group">
 
                   <div class="panel">--Subir Documento--</div>
+
                   <p class="help-block" style="font-size:10px">Tamaño Máximo: <b>20 MB</b></p>
 
                   <input type="file" class="rutaDocumento" name="rutaDocumento" required>
@@ -297,9 +406,10 @@ if ($_SESSION["perfil"] == "coordinador") {
           </div>
 
           <input type="hidden" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
+          
           <input type="hidden" name="idMacros" value="<?php echo $_SESSION["nombre_macros"]; ?>" id="idMacros">
-          <input type="hidden" name="nuevaRuta" value="vista/documentos/proinsalud/">
-
+          
+          <input type="" name="nuevaRuta" value="vista/documentos/proinsalud/">
 
           <!--=====================================
           PIE DEL MODAL
@@ -310,18 +420,19 @@ if ($_SESSION["perfil"] == "coordinador") {
             <button type="submit" class="btn btn-info" style="margin-right:10px">Guardar Documento</button>
 
           </div>
+
           <?php
 
           $crearFormulario = new ControladorFormularios();
+
           $crearFormulario->ctrCrearFormulario();
 
           ?>
-
-
-      </div>
+          
+        </div>
 
       </form>
-
+    
     </div>
 
   </section>

@@ -52,16 +52,11 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                   <th>Código</th>
                   <th>Versión</th>
                   <th>Nombre</th>
-                  <th>Fecha Elaboración</th>
                   <th>Fecha Actualización</th>
                   <th>Ultima Revisión</th>
-                  <th>Fecha Publicación</th>
-                  <th>Macroproceso</th>
                   <th>Proceso</th>
-                  <th>Grupo</th>
-                  <th>Usuario</th>
-                  <th>URL</th>
-                  <th>Acciones</th>
+                  <!--<th>URL</th>-->
+                  <th style ="width: 200px">Acciones</th>
 
                 </tr>
 
@@ -83,47 +78,30 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                   <td>' . $value["codigo"] . '</td>
                   <td>ver-' . $value["version"] . '</td>
                   <td>' . $value["nombre"] . '</td>
-                  <td>' . $value["fecha_elaboracion"] . '</td>
                   <td>' . $value["fecha_actualizacion"] . '</td>
-                  <td>' . $value["fecha_ultima_revision"] . '</td>
-                  <td>' . $value["fecha_publicacion"] . '</td>';
-
-                  $itemMacro = "id";
-                  $valorMacro = $value["macroproceso"];
-                  $respuestaMacro = ControladorMacros::ctrMostrarMacros($itemMacro, $valorMacro);
-                  echo '<td>' . $respuestaMacro["nombre_macro"] . '</td>';
-
+                  <td>' . $value["fecha_ultima_revision"] . '</td>';
+                  
                   $itemProceso = "menu_id";
                   $valorProceso = $value["proceso"];
                   $respuestaProceso = ControladorProcesos::ctrMostrarProcesos($itemProceso, $valorProceso);
                   echo '<td>' . $respuestaProceso["nombre_proceso"] . '</td>';
-
-                  $itemGrupo = "menu_id";
-                  $valorGrupo = $value["grupo"];
-                  $respuestaGrupo = ControladorCarpetas::ctrMostrarCarpetas($itemGrupo, $valorGrupo);
-                  echo '<td>' . $respuestaGrupo["nombre_carpeta"] . '</td>';
-
-                  $itemUsuario = "id";
-                  $valorUsuario = $value["usuario"];
-                  $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
-                  echo '<td>' . $respuestaUsuario["nombre"] . '</td>
+                  
+                  /*<td>'.$value["url"].'</td>';*/
                  
-                  <td>' . $value["url"] . '</td>';
-
                   echo '<td align="center">
                       
                   <div class="btn-group">
 
-                  <a class="btn btn-success" target="_black" href="' . $value["url"] . '">';
+                  <a style="padding:10px" class="btn btn-success" target="_black" href="' . $value["url"] . '">';
                   echo '<i class="fa fa-download"></i></a>
 
-                    <button class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>';
+                    <button style="padding:10px" class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>';
 
                   if ($_SESSION["perfil"] == "SuperAdmin") {
 
-                    echo '<button class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
+                    echo '<button style="padding:10px" class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
 
-                    <button class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
+                    <button style="padding:10px" class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
                   }
 
                   echo '</div>
@@ -162,7 +140,7 @@ MODAL VISUALIZADOR DE DOCUMENTOS
 
 <div id="modalVisualizarDocumentos" class="modal fade" role="dialog">
 
-  <div class="modal-dialog" style="width: 90%;">
+  <div class="modal-dialog" style="width:50%">
 
     <div class="modal-content" style="border-radius: 5px;">
 
@@ -184,14 +162,16 @@ MODAL VISUALIZADOR DE DOCUMENTOS
             CUERPO DEL MODAL
             ======================================-->
 
-        <div class="modal-body">
+        <div class="modal-fade">
 
           <div class="box-body">
 
+          
+            
+          <embed value="<?php echo $value["id"]; ?>" src="<?php echo $value["url"];?>" width="100%" height="600px"/>
 
-
-
-
+          
+                    
           </div>
 
         </div>
@@ -202,9 +182,8 @@ MODAL VISUALIZADOR DE DOCUMENTOS
 
         <div class="modal-footer" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
 
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="button" class="btn btn-success"><i class="fa fa-download"></i> Descargar</button>
 
         </div>
 
@@ -262,9 +241,7 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-barcode"></i></span>
 
-                  <input class="form-control input-lg" value="<?php $Object = new DateTime();
-                                                              $DateAndTime = $Object->format("Ymdms");
-                                                              echo "$DateAndTime"; ?>" style="border-radius: 5px;" name="nuevoCodigo" id="nuevoCodigo" readonly>
+                  <input class="form-control input-lg" name="editarCodigo" id="editarCodigo" readonly>
 
                 </div>
 
@@ -282,7 +259,7 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-file-text"></i></span>
 
-                  <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoNombre" id="nuevoNombre" placeholder="Nombre del documento" id="nuevoNombre" required>
+                  <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="editarNombre" id="editarNombre" required>
 
                 </div>
 
@@ -298,7 +275,7 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-pencil-square-o"></i></span>
 
-                  <input type="number" class="form-control input-lg" style="border-radius: 5px;" name="nuevaVersion" min="1" placeholder="# Versión" id="nuevaVersion" required>
+                  <input type="number" class="form-control input-lg" style="border-radius: 5px;" name="editarVersion" min="1" id="editarVersion" required>
 
                 </div>
 
@@ -316,27 +293,22 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-object-group"></i></span>
 
-                  <select class="form-control input-lg" id="nuevoMacro" name="nuevoMacro" style="border-radius: 5px;" required>
+                  <select class="form-control input-lg" id="editarMacro" name="editarMacro" style="border-radius: 5px;" required>
 
-                    <option value=""> Seleccione un Macroproceso...</option>
+                    <option> </option>
 
                     <?php
 
                     $item = null;
                     $valor = null;
-                    $sel_macro = $_SESSION["roles"];
-
-
+                    
                     $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
 
                     foreach ($macros as $key => $value) {
-
-                      if (($value["id"]) == $sel_macro) {
-
+                      
                         echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
-                      }
                     }
-
+                    
                     ?>
 
                   </select>
@@ -353,24 +325,21 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-object-ungroup"></i></span>
 
-                  <select class="form-control input-lg" id="nuevoProceso" name="nuevoProceso" style="border-radius: 5px;" required>
+                  <select class="form-control input-lg" id="editarProceso" name="editarProceso" style="border-radius: 5px;" required>
 
-                    <option name="selProceso">Seleccione un Proceso...</option>
+                    <option> </option>
 
                     <?php
 
                     $item = null;
                     $valor = null;
-                    $sel_proce = $_SESSION["roles"];
-
+                    
                     $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
 
                     foreach ($proce as $key => $value) {
 
-                      if (($value["menu_id"]) == $sel_proce) {
-
-                        echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
-                      }
+                      echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
+                      
                     }
 
                     ?>
@@ -393,28 +362,14 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-folder-open-o"></i></span>
 
-                  <select class="form-control input-lg" name="nuevoGrupo" id="nuevoGrupo" style="border-radius: 5px;" required>
+                  <select class="form-control input-lg" name="editarGrupo" id="editarGrupo" style="border-radius: 5px;" required>
 
-                    <option value="Vendedor">Seleccione un Grupo...</option>
+                    <option value="10">Procesos (SF, BPM, BPE, LAB, IMAG, CITAS)</option>
 
-                    <?php
+                    <option value="11">TS, HOS, URG, UCIN, ETC, SST</option>
 
-                    $item = null;
-                    $valor = null;
-                    $sel_carpeta = $_SESSION["roles"];
-
-                    $carpes = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
-
-                    foreach ($carpes as $key => $value) {
-
-                      if (($value["menu_id"]) == $sel_carpeta) {
-
-                        echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
-                      }
-                    }
-
-                    ?>
-
+                    <option value="12">RMPN, REPOC, ETC</option>
+                    
                   </select>
 
                 </div>
@@ -429,7 +384,7 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span>
 
-                  <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFecingreso" placeholder="Fecha de creación" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                  <input type="text" class="form-control input-lg" style="border-radius: 5px;" id="editarFecingreso" name="editarFecingreso" required>
 
                 </div>
 
@@ -447,6 +402,7 @@ EDITAR REGISTRO DE DOCUMENTOS
               <div class="input-group">
 
                 <div class="panel">--Subir Documento--</div>
+                
                 <p class="help-block" style="font-size:10px">Tamaño Máximo: <b>20 MB</b></p>
 
                 <input type="file" class="rutaDocumento" name="rutaDocumento">
@@ -473,13 +429,11 @@ EDITAR REGISTRO DE DOCUMENTOS
           <button type="button" class="btn btn-info">Modificar Registro</button>
 
         </div>
-
-        <?php
-
-        ?>
-
+        
       </form>
 
     </div>
 
   </div>
+
+</div>

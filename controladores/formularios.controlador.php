@@ -14,10 +14,15 @@ class ControladorFormularios{
 			   preg_match('/^[0-9]+$/', $_POST["nuevaVersion"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
 			   preg_match('/^[0-9\/]+$/', $_POST["nuevoFecingreso"]) &&
+			   preg_match('/^[0-9\/]+$/', $_POST["nuevaFechaUltimaRev"]) &&
 			   preg_match('/^[0-9]+$/', $_POST["nuevoMacro"]) &&
 			   preg_match('/^[0-9]+$/', $_POST["nuevoProceso"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ, ]+$/', $_POST["nuevoGrupo"]) &&
 			   preg_match('/^[0-9]+$/', $_POST["idUsuario"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoCiclo"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoOrigen"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoVista"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoRelacionados"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\/\ ]+$/', $_POST["nuevaRuta"])){
 
 				/*=============================================
@@ -26,29 +31,28 @@ class ControladorFormularios{
 							
 				if(isset($_FILES["rutaDocumento"]["tmp_name"])){
 
-						$nombreDoc = $_FILES["rutaDocumento"]["name"];
 						$nombreTmp = $_FILES["rutaDocumento"]["tmp_name"];
-
-						$extenDoc = explode('.', $nombreDoc);
-
-						$actualDocExt = strtolower(end($extenDoc)); 
-
-						$nuevoNombreDoc = uniqid('', true).".".$actualDocExt;
+				
+						$nuevoNombreDoc = $_FILES["rutaDocumento"]["name"];
 
 						/*=============================================
 						DIRECTORIO DE RUTA LOCAL ALMACENAMIENTO
 						=============================================*/
 	
-						$directorio = 'vistas/documentos/proinsalud/'.$_POST["nuevoNombre"];
+						$directorio = 'vistas/documentos/';
 
 						/*=============================================
 						GUARDAR EL DOCUMENTO
 						=============================================*/
 
-						$destino = 'vistas/documentos/proinsalud/'.$_POST["nuevoNombre"]."/".$nuevoNombreDoc;
+						$destino = 'vistas/documentos/'.$nuevoNombreDoc;
 						
-						mkdir($directorio, 0755);
+						if(!file_exists($directorio)){
 
+						mkdir($directorio, 0755, true);
+
+						}
+						
 						move_uploaded_file($nombreTmp, $destino);
 	
 						
@@ -61,10 +65,15 @@ class ControladorFormularios{
 							   "version" => $_POST["nuevaVersion"],
 							   "nombre" => $_POST["nuevoNombre"],
 							   "fecha_elaboracion" => $_POST["nuevoFecingreso"],
+							   "fecha_ultima_revision" => $_POST["nuevaFechaUltimaRev"],
 							   "macroproceso" => $_POST["nuevoMacro"],
 							   "proceso" => $_POST["nuevoProceso"],
 							   "grupo" => $_POST["nuevoGrupo"],
-							   "usuario" => $_POST["idUsuario"],							   					           					   
+							   "usuario" => $_POST["idUsuario"],
+							   "ciclo" => $_POST["nuevoCiclo"],
+							   "origen" => $_POST["nuevoOrigen"],
+							   "vista" => $_POST["nuevoVista"],
+							   "relacionados" => $_POST["nuevoRelacionados"],
 							   "url" => $destino);
 							   
 
@@ -77,7 +86,7 @@ class ControladorFormularios{
 					swal({
 
 						type: "success",
-						title: "¡El Documento ha sido guardado correctamente!",
+						
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
 

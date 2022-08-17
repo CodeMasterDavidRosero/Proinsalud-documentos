@@ -16,7 +16,7 @@ $(".nuevaRuta").change(function(){
 
   		 swal({
 		      title: "Error al subir la documento",
-		      text: "¡La documento debe estar en formato JPG o PNG!",
+		      text: "¡La documento debe estar en formato Office/PDF/Imagen!",
 		      type: "error",
 		      confirmButtonText: "¡Cerrar!"
 		    });
@@ -73,30 +73,14 @@ $(".tablas").on("click", ".btnEditarDocumento", function(){
 			Traer los valores de la base de datos a editar
 			=============================================*/
 			
+			$("#editarCodigo").val(respuesta["codigo"]);
 			$("#editarNombre").val(respuesta["nombre"]);
-			$("#editarUsuario").val(respuesta["usuario"]);
-			$("#editarFecingreso").val(respuesta["fecingreso"]);
-			$("#editarTipodoc").html(respuesta["tipodoc"]);
-			$("#editarTipodoc").val(respuesta["tipodoc"]);
-			$("#editarTelefono").val(respuesta["telefono"]);
-			$("#editarFechanac").val(respuesta["fechanac"]);
-			$("#editarContrato").html(respuesta["contrato"]);
-			$("#editarContrato").val(respuesta["contrato"]);
-			$("#editarNumident").val(respuesta["numident"]);
-			$("#editarPerfil").html(respuesta["perfil"]);
-			$("#editarPerfil").val(respuesta["perfil"]);
-			$("#fotoActual").val(respuesta["foto"]);
-			$("#passwordActual").val(respuesta["password"]);
-
-			if(respuesta["foto"] != ""){
-
-				$(".previsualizarEditar").attr("src", respuesta["foto"]);
-
-			}else{
-
-				$(".previsualizarEditar").attr("src", "vistas/img/usuarios/default/anonymous.png");
-
-			}
+			$("#editarVersion").val(respuesta["version"]);
+			$("#editarMacro").val(respuesta["macroproceso"]);
+			$("#editarProceso").val(respuesta["proceso"]);
+			$("#editarGrupo").val(respuesta["grupo"]);			
+			$("#editarFecingreso").val(respuesta["fecha_elaboracion"]);			
+			
 
 		}
 

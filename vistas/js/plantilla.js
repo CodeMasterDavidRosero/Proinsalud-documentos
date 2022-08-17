@@ -5,10 +5,7 @@ SideBar Menu
 $('.sidebar-menu').tree()
 
 /*=============================================
-Data Table  
-
 Pendientes:
--Terminar modal de Editar Usuario. pie de forma
 -Visualizar en el modal el archivo. (Consultar como ver cualquier archivo en un modal pdf)
 -Crear en Hidden un buscador con el id de Session: (https://www.youtube.com/watch?v=yGBk9Nalyq8)
 
