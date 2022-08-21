@@ -17,113 +17,120 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
 
   <section class="content-header">
 
-    <form role="form" method="post" enctype="multipart/form-data">
-
-      <section class="content-header" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-        <h1 style="font-size:30px">Administrar Documentos</h1>
-
-        <ol class="breadcrumb">
-
-          <li><a href="inicio"><i class="fa fa-list-ol"></i>Menu Documentos</a></li>
-          <li><a href="formularios"><i class="fa fa-plus"></i>Plantilla Formularios</a></li>
-
-        </ol>
-
-      </section>
-
-    </form>
-
     <div class="modal-content">
 
-      <section class="content">
+      <form role="form" method="post" enctype="multipart/form-data">
 
-        <div class="box">
+        <section class="content-header" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
-          <div class="box-body">
+          <h1 style="font-size:30px">Administrar Documentos</h1>
 
-            <table class="table table-bordered table-striped dt-responsive tablas" style="border-radius:5px; width: 100%">
+          <ol class="breadcrumb">
 
-              <thead>
+            <li><a href="inicio"><i class="fa fa-list-ol"></i>Menu Documentos</a></li>
 
-                <tr>
+            <li><a href="formularios"><i class="fa fa-plus"></i>Plantilla Formularios</a></li>
 
-                  <th style="width:10px">#</th>
-                  <th>Código</th>
-                  <th>Versión</th>
-                  <th>Nombre</th>
-                  <th>Fecha Actualización</th>
-                  <th>Ultima Revisión</th>
-                  <th>Proceso</th>
-                  <!--<th>URL</th>-->
-                  <th style ="width: 200px">Acciones</th>
+          </ol>
 
-                </tr>
+        </section>
 
-              </thead>
+      </form>
 
-              <tbody>
+      <div class="modal-content">
 
-                <?php
+        <section class="content">
 
-                $item = null;
-                $valor = null;
+          <div class="box">
 
-                $documentos = ControladorDocumentos::ctrMostrarDocumentos($item, $valor);
+            <div class="box-body">
 
-                foreach ($documentos as $key => $value) {
+              <table class="table table-bordered table-striped dt-responsive tablas" style="border-radius:5px; width: 100%">
 
-                  echo ' <tr>
+                <thead>
+
+                  <tr>
+
+                    <th style="width:10px">#</th>
+                    <th>Código</th>
+                    <th>Versión</th>
+                    <th>Nombre</th>
+                    <th>Fecha Actualización</th>
+                    <th>Ultima Revisión</th>
+                    <th>Proceso</th>
+                    <!--<th>URL</th>-->
+                    <th style="width: 200px">Acciones</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  <?php
+
+                  $item = null;
+                  $valor = null;
+
+                  $documentos = ControladorDocumentos::ctrMostrarDocumentos($item, $valor);
+
+                  foreach ($documentos as $key => $value) {
+
+                    echo ' <tr>
                   <td>' . ($key + 1) . '</td>
                   <td>' . $value["codigo"] . '</td>
-                  <td>ver-' . $value["version"] . '</td>
+                  <td>' . $value["version"] . '</td>
                   <td>' . $value["nombre"] . '</td>
                   <td>' . $value["fecha_actualizacion"] . '</td>
                   <td>' . $value["fecha_ultima_revision"] . '</td>';
-                  
-                  $itemProceso = "menu_id";
-                  $valorProceso = $value["proceso"];
-                  $respuestaProceso = ControladorProcesos::ctrMostrarProcesos($itemProceso, $valorProceso);
-                  echo '<td>' . $respuestaProceso["nombre_proceso"] . '</td>';
-                  
-                  /*<td>'.$value["url"].'</td>';*/
-                 
-                  echo '<td align="center">
+
+                    $itemProceso = "menu_id";
+                    $valorProceso = $value["proceso"];
+                    $respuestaProceso = ControladorProcesos::ctrMostrarProcesos($itemProceso, $valorProceso);
+                    echo '<td>' . $respuestaProceso["nombre_proceso"] . '</td>';
+
+                    /*<td>'.$value["url"].'</td>';*/
+
+                    echo '<td align="center">
                       
                   <div class="btn-group">
 
                   <a style="padding:10px" class="btn btn-success" target="_black" href="' . $value["url"] . '">';
-                  echo '<i class="fa fa-download"></i></a>
+                    echo '<i class="fa fa-download"></i></a>
 
                     <button style="padding:10px" class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>';
 
-                  if ($_SESSION["perfil"] == "SuperAdmin") {
+                    if ($_SESSION["perfil"] == "SuperAdmin") {
 
-                    echo '<button style="padding:10px" class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
+                      echo '<button style="padding:10px" class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
 
                     <button style="padding:10px" class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
-                  }
+                    }
 
-                  echo '</div>
+                    echo '</div>
 
                   </td>
 
                 </tr>';
-                }
+                  }
 
-                ?>
+                  ?>
 
-              </tbody>
+                </tbody>
 
-            </table>
+              </table>
+
+            </div>
 
           </div>
 
-        </div>
+        </section>
 
-      </section>
+      </div>
 
     </div>
+
+    <br>
 
   </section>
 
@@ -147,8 +154,8 @@ MODAL VISUALIZADOR DE DOCUMENTOS
       <form role="form" method="post" enctype="multipart/form-data">
 
         <!--=====================================
-            CABEZA DEL MODAL
-            ======================================-->
+        CABEZA DEL MODAL
+        ======================================-->
 
         <div class="modal-header" style="background: #ffc107; color:Black; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
@@ -166,24 +173,19 @@ MODAL VISUALIZADOR DE DOCUMENTOS
 
           <div class="box-body">
 
-          
-            
-          <embed value="<?php echo $value["id"]; ?>" src="<?php echo $value["url"];?>" width="100%" height="600px"/>
+            <embed value="<?php echo $value["id"]; ?>" src="<?php echo $value["url"]; ?>" width="100%" height="600px" />
 
-          
-                    
           </div>
 
         </div>
 
         <!--=====================================
-            PIE DEL MODAL
-            ======================================-->
+        PIE DEL MODAL
+        ======================================-->
 
         <div class="modal-footer" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
 
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
         </div>
 
@@ -265,8 +267,6 @@ EDITAR REGISTRO DE DOCUMENTOS
 
               </div>
 
-
-
               <!-- ENTRADA PARA LA VERSION DOCUMENTO -->
 
               <div class="col-xs-6">
@@ -301,14 +301,14 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                     $item = null;
                     $valor = null;
-                    
+
                     $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
 
                     foreach ($macros as $key => $value) {
-                      
-                        echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
+
+                      echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
                     }
-                    
+
                     ?>
 
                   </select>
@@ -333,13 +333,12 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                     $item = null;
                     $valor = null;
-                    
+
                     $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
 
                     foreach ($proce as $key => $value) {
 
                       echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
-                      
                     }
 
                     ?>
@@ -369,7 +368,7 @@ EDITAR REGISTRO DE DOCUMENTOS
                     <option value="11">TS, HOS, URG, UCIN, ETC, SST</option>
 
                     <option value="12">RMPN, REPOC, ETC</option>
-                    
+
                   </select>
 
                 </div>
@@ -402,13 +401,12 @@ EDITAR REGISTRO DE DOCUMENTOS
               <div class="input-group">
 
                 <div class="panel">--Subir Documento--</div>
-                
+
                 <p class="help-block" style="font-size:10px">Tamaño Máximo: <b>20 MB</b></p>
 
                 <input type="file" class="rutaDocumento" name="rutaDocumento">
 
                 <p class="help-block" style="color: rgb(0 123 255); font-size:12px">Tipo de Archivo: <b>WORD, EXCEL, PDF, PPT, JPGE, PNG</b></p>
-
 
               </div>
 
@@ -417,6 +415,8 @@ EDITAR REGISTRO DE DOCUMENTOS
           </div>
 
         </div>
+
+        <br>
 
         <!--=====================================
         PIE DEL MODAL
@@ -429,7 +429,7 @@ EDITAR REGISTRO DE DOCUMENTOS
           <button type="button" class="btn btn-info">Modificar Registro</button>
 
         </div>
-        
+
       </form>
 
     </div>

@@ -91,9 +91,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-barcode"></i></span>
 
-                    <input class="form-control input-lg" value="<?php $Object = new DateTime();
-                                                                $DateAndTime = $Object->format("Ymdms");
-                                                                echo "$DateAndTime"; ?>" style="border-radius: 5px;" name="nuevoCodigo" id="nuevoCodigo" readonly>
+                    <input class="form-control input-lg" style="border-radius: 5px;" name="nuevoCodigo" id="nuevoCodigo" required>
 
                   </div>
 
@@ -113,7 +111,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <select class="form-control input-lg" id="nuevoMacro" name="nuevoMacro" style="border-radius: 5px;" required>
 
-                      <option value="">--Seleccione un Macroproceso--</option>
+                      <option value="" readonly>--Seleccione un Macroproceso--</option>
 
                       <?php
 
@@ -127,21 +125,6 @@ if ($_SESSION["perfil"] == "coordinador") {
                         foreach ($macros as $key => $value) {
 
                           echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
-                        }
-                      } else {
-
-                        $item = null;
-                        $valor = null;
-                        $sel_macro = $_SESSION["roles"];
-
-                        $macros = ControladorMacros::ctrMostrarMacros($item, $valor);
-
-                        foreach ($macros as $key => $value) {
-
-                          if (($value["id"]) == $sel_macro) {
-
-                            echo '<option value="' . $value["id"] . '">' . $value["nombre_macro"] . '</option>';
-                          }
                         }
                       }
 
@@ -157,46 +140,19 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                 <div class="col-xs-6">
 
-                  <div class="input-group">
+                  <div class="input-group" style="width: 100%;">
 
-                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-object-ungroup"></i></span>
+                    <div class=" input-group nuevoProcesos" style="width: 100%;">
 
-                    <select class="form-control input-lg" id="nuevoProceso" name="nuevoProceso" style="border-radius: 5px;" required>
+                      <span class="input-group-addon" style="border-radius: 5px;" id="iconSelProceso"><i class="fa fa-object-ungroup"></i></span>
 
-                      <option value="">--Seleccione un Proceso--</option>
+                      <select class="form-control input-lg" name="SelProce" id="SelProce" style="border-radius: 5px;" required>
 
-                      <?php
+                        <option value="" readonly>--Selecionar un proceso--</option>
 
-                      if (($_SESSION["perfil"]) == "SuperAdmin") {
+                      </select>
 
-                        $itemS = null;
-                        $valorS = null;
-                        $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
-
-                        foreach ($proce as $key => $value) {
-
-                          echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
-                        }
-                      } else {
-
-                        $item = null;
-                        $valor = null;
-                        $sel_proce = $_SESSION["roles"];
-
-                        $proce = ControladorProcesos::ctrMostrarProcesos($item, $valor);
-
-                        foreach ($proce as $key => $value) {
-
-                          if (($value["menu_id"]) == $sel_proce) {
-
-                            echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_proceso"] . '</option>';
-                          }
-                        }
-                      }
-
-                      ?>
-
-                    </select>
+                    </div>
 
                   </div>
 
@@ -379,6 +335,7 @@ if ($_SESSION["perfil"] == "coordinador") {
             </div>
 
             <!-- ENTRADA PARA SUBIR EL DOCUMENTO -->
+
             <br>
 
             <br>
@@ -406,10 +363,10 @@ if ($_SESSION["perfil"] == "coordinador") {
           </div>
 
           <input type="hidden" name="idUsuario" value="<?php echo $_SESSION["id"]; ?>" id="idUsuario">
-          
+
           <input type="hidden" name="idMacros" value="<?php echo $_SESSION["nombre_macros"]; ?>" id="idMacros">
-          
-          <input type="" name="nuevaRuta" value="vista/documentos/proinsalud/">
+
+          <input type="hidden" name="nuevaRuta" value="vista/documentos/proinsalud/">
 
           <!--=====================================
           PIE DEL MODAL
@@ -428,12 +385,14 @@ if ($_SESSION["perfil"] == "coordinador") {
           $crearFormulario->ctrCrearFormulario();
 
           ?>
-          
-        </div>
 
-      </form>
-    
+        </form>
+
+      </div>
+
     </div>
+
+    <br>
 
   </section>
 

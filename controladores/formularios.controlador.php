@@ -10,7 +10,7 @@ class ControladorFormularios{
 
 		if(isset($_POST["nuevoNombre"])){
 
-			if(preg_match('/^[0-9]+$/', $_POST["nuevoCodigo"]) &&
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoCodigo"]) &&
 			   preg_match('/^[0-9]+$/', $_POST["nuevaVersion"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
 			   preg_match('/^[0-9\/]+$/', $_POST["nuevoFecingreso"]) &&
@@ -98,14 +98,11 @@ class ControladorFormularios{
 
 						}
 
-					});
-				
+					});				
 
-					</script>';
-					
+					</script>';					
 
 				}	
-
 
 			}else{
 
@@ -126,14 +123,11 @@ class ControladorFormularios{
 
 						}
 
-					});
-				
+					});				
 
 				</script>';
 
 			}
-
-
 		}
 	}
 }

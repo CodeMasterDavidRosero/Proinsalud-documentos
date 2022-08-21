@@ -10,7 +10,7 @@ class ModeloFormularios{
 
 	static public function mdlIngresarFormulario($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo, version, nombre, fecha_elaboracion, fecha_ultima_revision, macroproceso, proceso, grupo, ciclo, usuario, url, origen, vista, relacionados) 
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo, version, nombre,  fecha_elaboracion, fecha_ultima_revision, macroproceso, proceso, grupo, ciclo, usuario, url, origen, vista, relacionados) 
 		VALUES (:codigo, :version, :nombre, :fecha_elaboracion, :fecha_ultima_revision, :macroproceso, :proceso, :grupo, :ciclo, :usuario, :url, :origen, :vista, :relacionados)");
 
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);

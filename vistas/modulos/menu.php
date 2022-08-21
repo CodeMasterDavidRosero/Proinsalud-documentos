@@ -20,7 +20,6 @@
 					<span style="font-size:18px;">Documentos</span>
 				</a>
 			</li>
-
 			
 			<?php
 
@@ -35,27 +34,29 @@
 			}
 			?>
 
-			
-
 			<?php
-
 			if($_SESSION["perfil"] == "SuperAdmin"){
 
-			echo '<li><a href="usuarios"><i class="fa fa-users"></i><span style="font-size:18px;">Usuarios</span></a></li>';
-			}
+			echo '<li><a href="usuarios">
+							<i class="fa fa-users"></i>
+							<span style="font-size:18px;">Usuarios</span>
+					  </a>
+				  </li>';
+			}	
 			?>
+
+			<li>
+				<a href="documentos">
+					<i class="fa fa-search"></i>
+					<span style="font-size:18px;">Buscar</span>
+				</a>
+			</li>
+
 			<br>
 			<br>
 			<br>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+					
 			<li>
 				<a href="salir">
 					<i class="fa fa-sign-out"></i>

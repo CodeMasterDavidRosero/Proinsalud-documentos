@@ -186,6 +186,7 @@ CUERPO DOCUMENTO
 <script src="vistas/js/documentos.js"></script>
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/formularios.js"></script>
+<script src="vistas/js/inicio.js"></script>
 
 
 
