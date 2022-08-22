@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-08-2022 a las 01:10:47
+-- Tiempo de generación: 17-08-2022 a las 16:42:48
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.33
 
@@ -66,35 +66,36 @@ CREATE TABLE `documentos` (
   `nombre` text NOT NULL,
   `fecha_elaboracion` date NOT NULL,
   `fecha_actualizacion` timestamp NOT NULL DEFAULT current_timestamp(),
-  `fecha_ultima_revision` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fecha_ultima_revision` date NOT NULL DEFAULT current_timestamp(),
   `fecha_publicacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `macroproceso` text NOT NULL,
   `proceso` text NOT NULL,
   `grupo` text NOT NULL,
   `usuario` text NOT NULL,
-  `url` text NOT NULL
+  `url` text NOT NULL,
+  `ciclo` text NOT NULL,
+  `origen` text NOT NULL,
+  `vista` text NOT NULL,
+  `relacionados` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `documentos`
 --
 
-INSERT INTO `documentos` (`id`, `codigo`, `version`, `nombre`, `fecha_elaboracion`, `fecha_actualizacion`, `fecha_ultima_revision`, `fecha_publicacion`, `macroproceso`, `proceso`, `grupo`, `usuario`, `url`) VALUES
-(15, '202208030852', '1', 'Documento uno', '2022-08-03', '2022-08-03 05:17:34', '2022-08-03 05:17:34', '2022-08-03 05:17:34', '10', '10', '10', '3', 'vista/documentos/'),
-(16, '202208030849', '3', 'documento 2', '2022-08-03', '2022-08-03 05:18:18', '2022-08-03 05:18:18', '2022-08-03 05:18:18', '10', '10', '10', '3', 'vista/documentos/'),
-(17, '202208030822', '1', 'Nuevo Doc1', '2022-08-03', '2022-08-03 17:46:18', '2022-08-03 17:46:18', '2022-08-03 17:46:18', '1', '1', '1', '1', 'vista/documentos/'),
-(19, '202208030819', '1', 'Docuemento Inicial', '2022-08-03', '2022-08-03 17:53:26', '2022-08-03 17:53:26', '2022-08-03 17:53:26', '1', '1', '1', '1', 'vista/documentos/'),
-(23, '202208030848', '1', 'himno republica de colombia', '2022-08-03', '2022-08-03 21:29:17', '2022-08-03 21:29:17', '2022-08-03 21:29:17', '1', '1', '1', '1', 'vista/documentos/'),
-(24, '202208030830', '1', 'docu prieb', '2022-08-03', '2022-08-03 21:35:48', '2022-08-03 21:35:48', '2022-08-03 21:35:48', '1', '1', '1', '1', 'vista/documentos/'),
-(25, '202208030803', '1', 'Docu pruebas doc', '2022-08-03', '2022-08-03 21:54:30', '2022-08-03 21:54:30', '2022-08-03 21:54:30', '1', '1', '1', '1', 'vista/documentos/'),
-(26, '202208040850', '1', 'David Ro', '2022-08-03', '2022-08-03 22:13:09', '2022-08-03 22:13:09', '2022-08-03 22:13:09', '1', '1', '1', '1', 'vista/documentos/'),
-(27, '202208040836', '1', 'Prueba 447', '2022-08-03', '2022-08-03 22:16:55', '2022-08-03 22:16:55', '2022-08-03 22:16:55', '1', '1', '1', '1', 'vista/documentos/'),
-(28, '202208040855', '1', 'LmDSMF', '2022-08-03', '2022-08-03 22:18:20', '2022-08-03 22:18:20', '2022-08-03 22:18:20', '1', '1', '1', '1', 'vista/documentos/'),
-(29, '202208040840', '1', 'David R', '2022-08-03', '2022-08-03 22:19:57', '2022-08-03 22:19:57', '2022-08-03 22:19:57', '1', '1', '1', '1', 'vista/documentos/'),
-(30, '202208040843', '1', 'Prueba exitosa', '2022-08-03', '2022-08-03 22:31:03', '2022-08-03 22:31:03', '2022-08-03 22:31:03', '1', '1', '1', '1', 'vista/documentos/'),
-(33, '202208040831', '3', 'Documento de Prueba', '2022-08-03', '2022-08-03 22:38:52', '2022-08-03 22:38:52', '2022-08-03 22:38:52', '1', '1', '1', '1', 'vista/documentos/'),
-(34, '202208040853', '7', 'Prueba exitosa', '2022-08-03', '2022-08-03 22:40:24', '2022-08-03 22:40:24', '2022-08-03 22:40:24', '1', '1', '1', '1', 'vista/documentos/'),
-(35, '202208040815', '3', 'Prueba Documento', '2022-08-03', '2022-08-03 23:05:55', '2022-08-03 23:05:55', '2022-08-03 23:05:55', '1', '1', '1', '1', 'vista/documentos/proinsalud/');
+INSERT INTO `documentos` (`id`, `codigo`, `version`, `nombre`, `fecha_elaboracion`, `fecha_actualizacion`, `fecha_ultima_revision`, `fecha_publicacion`, `macroproceso`, `proceso`, `grupo`, `usuario`, `url`, `ciclo`, `origen`, `vista`, `relacionados`) VALUES
+(51, '202208090855', '1', 'DocumentoNuevoPDF', '2022-08-09', '2022-08-09 18:48:35', '2022-08-09', '2022-08-09 18:48:35', '2', '1', '10', '1', 'vistas/documentos/proinsalud/DocumentoNuevoPDF/IMPUESTOS_CARRO_2018.pdf', '', '', '', ''),
+(52, '202208090811', '1', 'Documento PDF nueva Ruta', '2022-08-09', '2022-08-09 18:56:41', '2022-08-09', '2022-08-09 18:56:41', '1', '1', '10', '1', 'vistas/documentos/Documento PDF nueva Ruta/IMPUESTOS CARRO 2018.pdf', '', '', '', ''),
+(53, '202208090801', '1', 'nuevo Documento', '2022-08-09', '2022-08-09 19:13:36', '2022-08-09', '2022-08-09 19:13:36', '1', '1', '10', '1', 'vistas/documentos/nuevo Documento/Guia TLS 1.2 (1).pdf', '', '', '', ''),
+(55, '202208090833', '1', 'NuevaRuta', '2022-08-09', '2022-08-09 21:23:50', '2022-08-09', '2022-08-09 21:23:50', '1', '1', '10', '1', 'vistas/documentos/carta laboral.pdf', '', '', '', ''),
+(56, '202208090816', '1', 'NuevaRuta', '2022-08-09', '2022-08-09 21:25:06', '2022-08-09', '2022-08-09 21:25:06', '2', '2', '10', '1', 'vistas/documentos/carta laboral.pdf', '', '', '', ''),
+(57, '202208090807', '1', 'NuevaRutas', '2022-08-09', '2022-08-09 21:26:34', '2022-08-09', '2022-08-09 21:26:34', '1', '1', '10', '1', 'vistas/documentos/carta_laboral.pdf', '', '', '', ''),
+(58, '202208090828', '1', 'NuevaDoc', '2022-08-09', '2022-08-09 21:43:46', '2022-08-09', '2022-08-09 21:43:46', '1', '1', '10', '1', 'vistas/documentos/CARTA LABORAL K.pdf', '', '', '', ''),
+(59, '202208090846', '1', 'Otro doc', '2022-08-09', '2022-08-09 21:47:34', '2022-08-09', '2022-08-09 21:47:34', '5', '2', '10', '1', 'vistas/documentos/HV DAVID ROSERO 2022 C.docx', '', '', '', ''),
+(60, '202208090836', '1', 'DocNuevo', '2022-08-09', '2022-08-09 21:57:03', '2022-08-09', '2022-08-09 21:57:03', '1', '1', '10', '1', 'vistas/documentos/FORMATO DE CAPACITACIÓN PRUEBAS UNITARIAS.pdf', '', '', '', ''),
+(61, '202208120811', '1', 'Documento Pdf', '2022-08-01', '2022-08-12 03:33:34', '2022-08-11', '2022-08-12 03:33:34', '1', '1', '10', '1', 'vistas/documentos/26. Nuevo Formato Relación otros contratos estatales.pdf', '', '', '', ''),
+(62, '202208170832', '1', 'Nuevo Documento y formulario', '2022-07-31', '2022-08-17 14:26:35', '2022-08-17', '2022-08-17 14:26:35', '2', '1', '10', '1', 'vistas/documentos/TU_Autorizacion Documento_Proceso de Seleccion David Rosero_1660140818-f-f.pdf', 'P', 'I', '0', 'Historias Clinicas'),
+(63, '202208170831', '1', 'Nuevo Doc', '2022-08-01', '2022-08-17 14:38:52', '2022-08-17', '2022-08-17 14:38:52', '2', '2', '10', '1', 'vistas/documentos/6. Cetificado a Salud.pdf', 'V', 'E', '1', 'Con Seguridad Hospitalaria');
 
 -- --------------------------------------------------------
 
@@ -210,10 +211,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `tipodoc`, `numident`, `telefono`, `fechanac`, `contrato`, `fecingreso`, `password`, `perfil`, `roles`, `foto`, `estado`, `ultimo_login`, `fecha`) VALUES
-(1, 'David Fernando Rosero Guerrero', 'DRosero', 'C.C.', 87217075, '317-844-4099', '1984-01-07', 'indefinido', '2019-08-05', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'SuperAdmin', '1', 'vistas/img/usuarios/David Rosero/500.jpg', 1, '2022-08-03 18:01:10', '2022-08-03 18:01:10'),
-(2, 'Alejandro Fernandez', 'AlejoFer', 'C.C.', 123456789, '314-505-4444', '2001-01-31', 'Horas', '2021-09-10', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Administrador', '1', 'vistas/img/usuarios/AlejoFer/500.png', 1, '2022-08-01 23:49:12', '2022-08-03 00:43:26'),
+(1, 'David Fernando Rosero Guerrero', 'DRosero', 'C.C.', 87217075, '317-844-4099', '1984-01-07', 'indefinido', '2019-08-05', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'SuperAdmin', '1', 'vistas/img/usuarios/David Rosero/500.jpg', 1, '2022-08-16 18:01:38', '2022-08-16 18:01:38'),
+(2, 'Alejandro Fernandez', 'AlejoFer', 'C.C.', 123456789, '314-505-4444', '2001-01-31', 'Horas', '2021-09-10', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Administrador', '1', 'vistas/img/usuarios/AlejoFer/500.png', 1, '2022-08-04 13:05:41', '2022-08-04 13:05:41'),
 (3, 'Lorena Patricia Narvaez', 'LoreNarvaez', 'C.C.', 1085246058, '31478440568', '2022-06-26', 'Horas', '2022-06-26', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Coordinador', '10', 'vistas/img/usuarios/LoreNarvaez/762.jpg', 1, '2022-08-03 00:16:47', '2022-08-03 00:16:47'),
-(7, 'Santiago Andres Paz Oquendo', 'SPaz', 'RUT', 1878431, '3134557879', '2022-06-28', 'Horas', '2022-06-28', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Coordinador', '5', 'vistas/img/usuarios/Aremlp/479.png', 1, '2022-08-03 17:47:35', '2022-08-03 17:47:35');
+(7, 'Santiago Andres Paz Oquendo', 'SPaz', 'RUT', 1878431, '3134557879', '2022-06-28', 'Horas', '2022-06-28', '$2a$07$asxx54ahjppf45sd87a5auZIOFA3CPrv0GKOOoFpxzHmfN6.LwpF.', 'Coordinador', '5', 'vistas/img/usuarios/Aremlp/479.png', 1, '2022-08-03 17:47:35', '2022-08-09 11:38:41');
 
 --
 -- Índices para tablas volcadas
@@ -264,7 +265,7 @@ ALTER TABLE `carpetas`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de la tabla `macros`

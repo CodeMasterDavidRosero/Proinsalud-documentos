@@ -47,8 +47,8 @@ Lista Desplegable Dinamica, Macroprocesos INICIO
 
 $("#nuevoMacro").change(function(){
 
-    var seleccionMacro = $(this).val();        
-    
+    var seleccionMacro = $(this).val();
+            
     if (seleccionMacro == "1"){
 
         $('#SelProce').remove();
@@ -78,7 +78,17 @@ $("#nuevoMacro").change(function(){
     
             '<option value="2">Control Interno</option>'+
     
-            '</div>')          
+            '</div>')
+
+            /* OJO LA SOLUCION ES LLEVAR ESTE VALOR A UN INPUT TEXT HIDDEN QUE ALMACENE EL VALOR QUE CAMBIA, LUGO LLEVARLO AL CONTROLADOR*/
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
     
     }
     
@@ -120,6 +130,14 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })
     }
     
     if (seleccionMacro == "3"){
@@ -150,6 +168,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
     }
     
     if (seleccionMacro == "4"){
@@ -180,6 +207,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
     }
     
     if (seleccionMacro == "5"){
@@ -194,7 +230,7 @@ $("#nuevoMacro").change(function(){
     
             '<option value="" readonly>--Selecionar un proceso--</option>'+
     
-            '<option value="11>Coodinación Departamental</option>'+
+            '<option value="11">Coodinación Departamental</option>'+
     
             '<option value="12">Coordinación Municipios</option>'+
     
@@ -218,6 +254,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
     }
     
     if (seleccionMacro == "6"){
@@ -260,6 +305,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
     }
     
     if (seleccionMacro == "7"){
@@ -294,6 +348,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
                 
     }
     
@@ -329,6 +392,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
                 
     }
     
@@ -360,6 +432,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo8').remove();
             $('#valorEfectivo10').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
     }
     
     if (seleccionMacro == "10"){
@@ -374,7 +455,7 @@ $("#nuevoMacro").change(function(){
     
             '<option value="" readonly>--Selecionar un proceso--</option>'+
     
-            '<option value="30>Procesos prioritarios</option>'+
+            '<option value="30">Procesos prioritarios</option>'+
     
             '<option value="31">Rutas integrales de atención en Salud</option>'+
     
@@ -398,6 +479,15 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo8').remove();
             $('#valorEfectivo9').remove();
             $('#valorEfectivo11').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
     }
     
     if (seleccionMacro == "11"){
@@ -431,7 +521,20 @@ $("#nuevoMacro").change(function(){
             $('#valorEfectivo8').remove();
             $('#valorEfectivo9').remove();
             $('#valorEfectivo10').remove();
+
+            $("#SelProce").change(function(){
+
+                var valores = $(this).val()
+
+                $("#nuevoProceso").val(valores);            
+                
+            })          
+    
     }
     
     })
+
+/*=========================================
+VERIFICAR EL VALUE DE PROCESOS
+=========================================*/
 

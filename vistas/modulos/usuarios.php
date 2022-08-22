@@ -160,13 +160,11 @@ if ($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == "") {
 
       </div>
 
-      
-
     </div>
 
     <br>
 
-    </section>
+  </section>
 
 </div>
 
@@ -386,11 +384,17 @@ MODAL AGREGAR USUARIO
 
                       <option value="">Selecionar Perfil</option>
 
-                      <option value="SuperAdmin">SuperAdmin</option>
+                      <option value="1">SuperAdmin</option>
 
-                      <option value="Administrador">Administrador</option>
+                      <option value="2">Administrador</option>
 
-                      <option value="Coordinador">Coordinador</option>
+                      <option value="3">Estrategico</option>
+
+                      <option value="4">Misionales</option>
+
+                      <option value="5">Apoyo</option>
+
+                      <option value="6">Invitado</option>
 
                     </select>
 
@@ -817,7 +821,7 @@ MODAL EDITAR USUARIO
   </div>
 
 </div>
-</div>
+
 
 <?php
 

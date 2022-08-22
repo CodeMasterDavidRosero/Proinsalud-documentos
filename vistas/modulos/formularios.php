@@ -45,7 +45,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
         <form role="form" method="post" enctype="multipart/form-data">
 
-          <!--=====================================
+        <!--=====================================
         CUERPO DEL MODAL
         ======================================-->
 
@@ -152,6 +152,8 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                       </select>
 
+                      
+
                     </div>
 
                   </div>
@@ -236,13 +238,13 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                       <option value="">--Seleccione la Etapa del Ciclo--</option>
 
-                      <option value="P">P - Planear</option>
+                      <option value="1">P - Planear</option>
 
-                      <option value="H">H - Hacer</option>
+                      <option value="2">H - Hacer</option>
 
-                      <option value="V">V - Verificar</option>
+                      <option value="3">V - Verificar</option>
 
-                      <option value="A">A - Actuar</option>
+                      <option value="4">A - Actuar</option>
 
                     </select>
 
@@ -280,9 +282,9 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                       <option value="">--Seleccione el Origen--</option>
 
-                      <option value="I">I - Interno</option>
+                      <option value="1">I - Interno</option>
 
-                      <option value="E">E - Externo</option>
+                      <option value="2">E - Externo</option>
 
                     </select>
 
@@ -302,9 +304,9 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                       <option value="">¿Tiene Vista General?</option>
 
-                      <option value="0">NO - Restingida</option>
+                      <option value="1">NO - Restingida</option>
 
-                      <option value="1">SI - Invitados</option>
+                      <option value="2">SI - Invitados</option>
 
                     </select>
 
@@ -367,6 +369,8 @@ if ($_SESSION["perfil"] == "coordinador") {
           <input type="hidden" name="idMacros" value="<?php echo $_SESSION["nombre_macros"]; ?>" id="idMacros">
 
           <input type="hidden" name="nuevaRuta" value="vista/documentos/proinsalud/">
+
+          <input type="hidden" name="nuevoProceso" id="nuevoProceso">
 
           <!--=====================================
           PIE DEL MODAL
