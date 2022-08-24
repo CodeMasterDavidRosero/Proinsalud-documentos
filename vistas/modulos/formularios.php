@@ -45,7 +45,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
         <form role="form" method="post" enctype="multipart/form-data">
 
-        <!--=====================================
+          <!--=====================================
         CUERPO DEL MODAL
         ======================================-->
 
@@ -111,7 +111,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <select class="form-control input-lg" id="nuevoMacro" name="nuevoMacro" style="border-radius: 5px;" required>
 
-                      <option value="" readonly>--Seleccione un Macroproceso--</option>
+                      <option value="" selected disabled>--Seleccione un Proceso--</option>
 
                       <?php
 
@@ -148,11 +148,9 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                       <select class="form-control input-lg" name="SelProce" id="SelProce" style="border-radius: 5px;" required>
 
-                        <option value="" readonly>--Selecionar un proceso--</option>
+                        <option value="" selected disabled>--Selecionar un Subproceso--</option>
 
                       </select>
-
-                      
 
                     </div>
 
@@ -174,29 +172,21 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <select class="form-control input-lg" name="nuevoGrupo" id="nuevoGrupo" style="border-radius: 5px;" required>
 
-                      <option value="">--Seleccione un Grupo--</option>
+                      <option value="" selected disabled>--Seleccione un Grupo--</option>
 
                       <?php
 
                       if (($_SESSION["perfil"]) == "SuperAdmin") {
-
-                        echo '<option value="10">Procedimientos, instructivos, formatos, etc</option>
-                              <option value="11">TS, HOS, URG, UCIN, ETC, SST</option>
-                              <option value="12">RMPN, REPOC, ETC</option>';
-                      } else {
-
+                        
                         $item = null;
                         $valor = null;
-                        $sel_carpeta = $_SESSION["roles"];
 
                         $carpes = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
 
                         foreach ($carpes as $key => $value) {
 
-                          if (($value["menu_id"]) == $sel_carpeta) {
+                            echo '<option value="' . $value["id"] . '">' . $value["nombre_carpeta"] . '</option>';
 
-                            echo '<option value="' . $value["menu_id"] . '">' . $value["nombre_carpeta"] . '</option>';
-                          }
                         }
                       }
 
@@ -216,7 +206,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span>
 
-                    <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFecingreso" placeholder="Fecha de creación" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                    <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevoFecingreso" placeholder="--Fecha de Elaboración--" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
                   </div>
 
@@ -238,13 +228,13 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                       <option value="">--Seleccione la Etapa del Ciclo--</option>
 
-                      <option value="1">P - Planear</option>
+                      <option value="Planear">Planear</option>
 
-                      <option value="2">H - Hacer</option>
+                      <option value="Hacer">Hacer</option>
 
-                      <option value="3">V - Verificar</option>
+                      <option value="Verificar">Verificar</option>
 
-                      <option value="4">A - Actuar</option>
+                      <option value="Actuar">Actuar</option>
 
                     </select>
 
@@ -260,7 +250,7 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                     <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-calendar"></i></span>
 
-                    <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevaFechaUltimaRev" placeholder="Fecha de última Revisión" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                    <input type="text" class="form-control input-lg" style="border-radius: 5px;" name="nuevaFechaUltimaRev" placeholder="--Fecha de última Revisión--" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
                   </div>
 
@@ -324,14 +314,26 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                   <div class="input-group">
 
-                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-files-o"></i></span>
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-link"></i></span>
 
-                    <textarea class="form-control input-lg" placeholder="Documentos Relacionados..." name="nuevoRelacionados" id="nuevoRelacionados" style="border-radius: 5px; resize:initial" required></textarea>
+                    <input class="form-control input-lg" placeholder="--Ingrese palabras clave--" name="nuevoPClaves" id="nuevoPClaves" style="border-radius: 5px;" required>                                        
 
                   </div>
 
                 </div>
 
+                <div class="col-xs-6">
+
+                  <div class="input-group">
+
+                    <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-files-o"></i></span>
+
+                    <input type="text" class="form-control input-lg" placeholder="Documentos Relacionados..." name="nuevoRelacionados" id="nuevoRelacionados" style="border-radius: 5px;" required></textarea>
+
+                  </div>
+
+                </div>
+              
               </div>
 
             </div>
@@ -348,11 +350,13 @@ if ($_SESSION["perfil"] == "coordinador") {
 
                 <div class="input-group">
 
-                  <div class="panel">--Subir Documento--</div>
+                  
 
-                  <p class="help-block" style="font-size:10px">Tamaño Máximo: <b>20 MB</b></p>
-
-                  <input type="file" class="rutaDocumento" name="rutaDocumento" required>
+                  <h4>--Subir Documento--</h4>
+                  
+                  <input type="file" class="input-lg" name="rutaDocumento" style="padding-left:0px" required>
+                  
+                  <p class="help-block" style="font-size:12px">Tamaño Máximo: <b>20 MB</b></p>
 
                   <p class="help-block" style="color: rgb(0 123 255); font-size:12px">Tipo de Archivo: <b>WORD, EXCEL, PDF, PPT, JPGE, PNG</b></p>
 

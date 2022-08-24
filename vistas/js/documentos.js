@@ -92,7 +92,7 @@ $(".tablas").on("click", ".btnEditarDocumento", function(){
 REVISAR SI EL DOCUMENTO YA ESTÁ REGISTRADO
 =============================================*/
 
-$("#nuevoNombre").change(function(){
+$("#nuevoCodigo").change(function(){
 
 	$(".alert").remove();
 
@@ -113,9 +113,9 @@ $("#nuevoNombre").change(function(){
 	    	
 	    	if(respuesta){
 
-	    		$("#nuevoNombre").parent().after('<div class="alert alert-warning">Este documento ya existe en la base de datos</div>');
+	    		$("#nuevoCodigo").parent().after('<div class="alert alert-warning">Este documento ya existe en la base de datos</div>');
 
-	    		$("#nuevoNombre").val("");
+	    		$("#nuevoCodigo").val("");
 
 	    	}
 
@@ -154,7 +154,6 @@ $(".table").on("click", ".btnEliminarDocumento", function(){
 
 })
 
-
 /*=============================================
 Calendario DataPicker
 =============================================*/
@@ -168,4 +167,40 @@ $('.dp-date').datepicker({
     todayHighlight: true,
     toggleActive: true
 });
+
+/*=============================================
+EDITAR REGISTRO DOCUMENTO
+=============================================*/
+$(".tablas").on("click", ".btnAbrirDocumento", function(){
+
+	var idDocumento = $(this).attr("idDocumento");
+	
+	var datos = new FormData();
+	datos.append("idDocumento", idDocumento);
+
+	$.ajax({
+
+		url:"ajax/documentos.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+
+			/*=============================================
+			Visualizar docuemento
+			=============================================*/
+			if(respuesta["url"] != ""){
+
+				$(".visualizarDocumento").attr("src", respuesta["url"]);
+					
+			}
+
+		}
+
+	});
+
+})
 

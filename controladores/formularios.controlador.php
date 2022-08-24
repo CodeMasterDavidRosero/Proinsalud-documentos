@@ -22,7 +22,8 @@ class ControladorFormularios{
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\-\ ]+$/', $_POST["nuevoCiclo"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\-\ ]+$/', $_POST["nuevoOrigen"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\-\ ]+$/', $_POST["nuevoVista"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\-\ ]+$/', $_POST["nuevoRelacionados"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ,\-\ ]+$/', $_POST["nuevoRelacionados"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ,\-\ ]+$/', $_POST["nuevoPClaves"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\/\ ]+$/', $_POST["nuevaRuta"])){
 
 				/*=============================================
@@ -71,6 +72,7 @@ class ControladorFormularios{
 							   "usuario" => $_POST["idUsuario"],
 							   "origen" => $_POST["nuevoOrigen"],
 							   "vista" => $_POST["nuevoVista"],
+							   "pclaves" => $_POST["nuevoPClaves"],
 							   "relacionados" => $_POST["nuevoRelacionados"],
 							   "url" => $destino);							   
 

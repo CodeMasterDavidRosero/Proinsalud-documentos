@@ -53,13 +53,15 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
 
                     <th style="width:10px">#</th>
                     <th>Código</th>
-                    <th>Versión</th>
+                    <th>Ver</th>
+                    <th>Keywords</th>
+                    <th>Ciclo</th>
                     <th>Nombre</th>
-                    <th>Fecha Actualización</th>
+                    <th>Fecha Elaboracíon</th>
                     <th>Ultima Revisión</th>
                     <th>Proceso</th>
                     <!--<th>URL</th>-->
-                    <th style="width: 200px">Acciones</th>
+                    <th style="width: 160px">Acciones</th>
 
                   </tr>
 
@@ -80,11 +82,13 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                   <td>' . ($key + 1) . '</td>
                   <td>' . $value["codigo"] . '</td>
                   <td>' . $value["version"] . '</td>
+                  <td>' . $value["pclaves"] . '</td>
+                  <td>' . $value["ciclo"] . '</td>
                   <td>' . $value["nombre"] . '</td>
                   <td>' . $value["fecha_actualizacion"] . '</td>
                   <td>' . $value["fecha_ultima_revision"] . '</td>';
 
-                    $itemProceso = "menu_id";
+                    $itemProceso = "id";
                     $valorProceso = $value["proceso"];
                     $respuestaProceso = ControladorProcesos::ctrMostrarProcesos($itemProceso, $valorProceso);
                     echo '<td>' . $respuestaProceso["nombre_proceso"] . '</td>';
@@ -95,16 +99,16 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                       
                   <div class="btn-group">
 
-                  <a style="padding:10px" class="btn btn-success" target="_black" href="' . $value["url"] . '">';
+                  <a class="btn btn-success" target="_black" href="' . $value["url"] . '">';
                     echo '<i class="fa fa-download"></i></a>
 
-                    <button style="padding:10px" class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>';
+                  <button class="btn btn-primary btnAbrirDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalVisualizarDocumentos"><i class="fa fa-eye"></i></button>';
 
                     if ($_SESSION["perfil"] == "SuperAdmin") {
 
-                      echo '<button style="padding:10px" class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
+                  echo '<button class="btn btn-danger btnEliminarDocumento" idDocumento="' . $value["id"] . '" usuario="' . $value["nombre"] . '"><i class="fa fa-trash"></i></button>
 
-                    <button style="padding:10px" class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
+                  <button class="btn btn-warning btnEditarDocumento" idDocumento="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocumentos"><i class="fa fa-pencil"></i></button>';
                     }
 
                     echo '</div>
@@ -147,7 +151,7 @@ MODAL VISUALIZADOR DE DOCUMENTOS
 
 <div id="modalVisualizarDocumentos" class="modal fade" role="dialog">
 
-  <div class="modal-dialog" style="width:50%">
+  <div class="modal-dialog" style="width: 60%;">
 
     <div class="modal-content" style="border-radius: 5px;">
 
@@ -169,12 +173,12 @@ MODAL VISUALIZADOR DE DOCUMENTOS
             CUERPO DEL MODAL
             ======================================-->
 
-        <div class="modal-fade">
+        <div class="modal-fade" >
 
           <div class="box-body">
-
-            <embed value="<?php echo $value["id"]; ?>" src="<?php echo $value["url"]; ?>" width="100%" height="600px" />
-
+            
+           <embed class="visualizarDocumento" width="100%" height="400px"/>
+           
           </div>
 
         </div>

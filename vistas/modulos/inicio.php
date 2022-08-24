@@ -46,13 +46,13 @@
 
                 <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-object-group"></i></span>
 
-                <select class="form-control input-lg" name="selMacro" id="selMacro" style="border-radius: 5px;">
+                <select class="form-control input-lg" name="selMacro" id="selMacro" style="border-radius: 5px;" required>
 
                   <br>
 
                   <br>
 
-                  <option value="" id="">--Seleccionar Macroproceso--</option>
+                  <option value="" id="" selected disabled>--Seleccionar Proceso--</option>
 
                   <?php
 
@@ -95,14 +95,14 @@
 
                 <select class="form-control input-lg" name="SelProce" id="SelProce" style="border-radius: 5px;" required>
 
-                  <option value="" readonly>--Selecionar un proceso--</option>
+                  <option value="" selected disabled>--Selecionar un Subproceso--</option>
 
                 </select>
 
               </div>
-
+            
             </div>
-
+          
           </div>
 
           <br>
@@ -115,7 +115,7 @@
 
             <br>
 
-            <button type="button" class="btn btn-info"><a href="documentos">Filtrar Documentos</a></button>
+            <button type="submit" class="btn btn-info"><a href="documentos">Filtrar Documentos</a></button>
 
           </div>
         

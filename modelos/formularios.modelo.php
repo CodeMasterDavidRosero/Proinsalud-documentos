@@ -10,8 +10,8 @@ class ModeloFormularios{
 
 	static public function mdlIngresarFormulario($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo, version, nombre,  fecha_elaboracion, fecha_ultima_revision, macroproceso, proceso, grupo, ciclo, usuario, url, origen, vista, relacionados) 
-		VALUES (:codigo, :version, :nombre, :fecha_elaboracion, :fecha_ultima_revision, :macroproceso, :proceso, :grupo, :ciclo, :usuario, :url, :origen, :vista, :relacionados)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo, version, nombre,  fecha_elaboracion, fecha_ultima_revision, macroproceso, proceso, grupo, ciclo, usuario, url, origen, vista, pclaves, relacionados) 
+		VALUES (:codigo, :version, :nombre, :fecha_elaboracion, :fecha_ultima_revision, :macroproceso, :proceso, :grupo, :ciclo, :usuario, :url, :origen, :vista, :pclaves, :relacionados)");
 
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
 		$stmt->bindParam(":version", $datos["version"], PDO::PARAM_STR);
@@ -26,6 +26,7 @@ class ModeloFormularios{
 		$stmt->bindParam(":url", $datos["url"], PDO::PARAM_STR);
 		$stmt->bindParam(":origen", $datos["origen"], PDO::PARAM_STR);
 		$stmt->bindParam(":vista", $datos["vista"], PDO::PARAM_STR);
+		$stmt->bindParam(":pclaves", $datos["pclaves"], PDO::PARAM_STR);
 		$stmt->bindParam(":relacionados", $datos["relacionados"], PDO::PARAM_STR);
 		
 

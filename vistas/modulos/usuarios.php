@@ -54,21 +54,21 @@ if ($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == "") {
 
             <div class="box-body">
 
-              <table class="table table-bordered table-striped dt-responsive tablas" style="border-radius:5px;">
+              <table class="table table-bordered table-striped dt-responsive tablas" style="border-radius:5px; width: 100%">
 
                 <thead>
 
                   <tr>
 
-                    <th style="width:10px">#</th>
+                    <th>#</th>
                     <th>Nombres</th>
                     <th>Usuario</th>
                     <th>Perfil</th>
                     <th>Rol</th>
-                    <th>Cumpleaños</th>
+                    <!--<th>Cumpleaños</th>
                     <th>Documento</th>
                     <th>Telefono</th>
-                    <th>Contrato</th>
+                    <th>Contrato</th>-->
                     <th>Foto</th>
                     <th>Estado</th>
                     <th>Último Acceso</th>
@@ -103,16 +103,16 @@ if ($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == "") {
                     echo '  <td>' . $respuestaRoles["nombre_macro"] . '</td>                  
                   
                   
-                  <td>' . $value["fechanac"] . '</td>
+                    '/*<td>' . $value["fechanac"] . '</td>
                   <td>' . $value["tipodoc"] . " " . $value["numident"] . '</td>
                   <td>' . $value["telefono"] . '</td>
-                  <td>' . $value["contrato"] . '</td>
+                  <td>' . $value["contrato"] . '</td>*/;'
 
                   ';
 
                     if ($value["foto"] != "") {
 
-                      echo '<td><img src="' . $value["foto"] . '" style="border:0px" class="img-thumbnail" width="50px"></td>';
+                      echo '<td align="center"><img src="' . $value["foto"] . '" style="border:0px" class="img-thumbnail" width="50px"></td>';
                     } else {
 
                       echo '<td><img src="vistas/img/usuarios/default/default.png" class="img-thumbnail" width="40px"></td>';
@@ -121,14 +121,14 @@ if ($_SESSION["perfil"] == "Coordinador" || $_SESSION["perfil"] == "") {
 
                     if ($value["estado"] != 0) {
 
-                      echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
+                      echo '<td align="center"><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
                     } else {
 
                       echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="1">Desactivado</button></td>';
                     }
 
                     echo '<td>' . $value["ultimo_login"] . '</td>
-                  <td>
+                  <td align="center">
 
                     <div class="btn-group">
                         
