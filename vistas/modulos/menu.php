@@ -46,9 +46,9 @@
 			?>
 
 			<li>
-				<a href="documentos">
+				<a data-toggle="modal" data-target="#modalBusquedaRapida">
 					<i class="fa fa-search"></i>
-					<span style="font-size:18px;">Buscar</span>
+					<span style="font-size:18px;">Busqueda Rápida</span>
 				</a>
 			</li>
 
