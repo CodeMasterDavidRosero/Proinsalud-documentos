@@ -69,7 +69,7 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                                         <th>Keywords</th>
                                         <th>Ciclo</th>
                                         <th>Nombre</th>
-                                        <th>Fecha Elaboracíon</th>
+                                        <th>F. Elaboracíon</th>
                                         <th>Ultima Revisión</th>
                                         <th>Proceso</th>
                                         <!--<th>URL</th>-->
@@ -91,14 +91,14 @@ if ($_SESSION["perfil"] == "" || $_SESSION["perfil"] == "") {
                                     foreach ($documentos as $key => $value) {
 
                                         echo ' <tr>
-                  <td>' . ($key + 1) . '</td>
-                  <td>' . $value["codigo"] . '</td>
-                  <td>' . $value["version"] . '</td>
-                  <td>' . $value["pclaves"] . '</td>
-                  <td>' . $value["ciclo"] . '</td>
-                  <td>' . $value["nombre"] . '</td>
-                  <td>' . $value["fecha_actualizacion"] . '</td>
-                  <td>' . $value["fecha_ultima_revision"] . '</td>';
+                                        <td>' . ($key + 1) . '</td>
+                                        <td>' . $value["codigo"] . '</td>
+                                        <td>' . $value["version"] . '</td>
+                                        <td>' . $value["pclaves"] . '</td>
+                                        <td>' . $value["ciclo"] . '</td>
+                                        <td>' . $value["nombre"] . '</td>
+                                        <td>' . $value["fecha_elaboracion"] . '</td>
+                                        <td>' . $value["fecha_ultima_revision"] . '</td>';
 
                                         $itemProceso = "id";
                                         $valorProceso = $value["proceso"];
@@ -379,11 +379,21 @@ EDITAR REGISTRO DE DOCUMENTOS
 
                                     <select class="form-control input-lg" name="editarGrupo" id="editarGrupo" style="border-radius: 5px;" required>
 
-                                        <option value="10">Procesos (SF, BPM, BPE, LAB, IMAG, CITAS)</option>
+                                    <option> </option>
 
-                                        <option value="11">TS, HOS, URG, UCIN, ETC, SST</option>
+                                        <?php
 
-                                        <option value="12">RMPN, REPOC, ETC</option>
+                                        $item = null;
+                                        $valor = null;
+
+                                        $proce = ControladorCarpetas::ctrMostrarCarpetas($item, $valor);
+
+                                        foreach ($proce as $key => $value) {
+
+                                            echo '<option value="' . $value["id"] . '">' . $value["nombre_carpeta"] . '</option>';
+                                        }
+
+                                        ?>
 
                                     </select>
 
